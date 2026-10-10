@@ -11,10 +11,22 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&amp;family=DM+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0;background:#FFFFFF}
-a{color:#0B3D91}a:hover{color:#9B0B4F}
+a{color:#9A094C}a:hover{color:#6E0736}
+h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!important}
+.navlink{color:#9A094C;text-decoration:none;font-weight:500;font-size:16px}
+.navlink:hover{color:#6E0736}
+.statn{font-family:"Plus Jakarta Sans",sans-serif;font-size:clamp(42px,5vw,58px);font-weight:700;color:#9A094C;line-height:1}
+.statl{margin-top:12px;color:#3A3A3A;font-size:16px;line-height:1.35}
+.statrule{width:1px;background:linear-gradient(#F3E2A8,#C6A04A,#F3E2A8);align-self:stretch}
+.stats{display:flex;align-items:stretch;justify-content:space-between;gap:18px;text-align:center}
+.revcard{background:#fff;border:1px solid #F0F0F0;box-shadow:0 10px 28px rgba(16,24,40,.06);padding:28px 26px 32px;display:flex;flex-direction:column;gap:16px}
+.revav{width:58px;height:58px;border-radius:50%;flex-shrink:0;background-size:1800% auto;background-position-y:18%}
+.stars{color:#F5B400;letter-spacing:2px;font-size:14px;line-height:1}
+.arrow{width:44px;height:44px;border:none;background:transparent;color:#222;font-size:22px;cursor:pointer}
+@media(max-width:800px){.stats{flex-wrap:wrap}.statrule{display:none}.stats>div{flex:1 1 40%}}
 .cimg{background-image:url(./assets/c4f47fc61d776932bebe430aafedc4cb.jpg);background-size:1300% 100%;background-repeat:no-repeat;aspect-ratio:16/10;width:100%}
 .ci0{background-position:0% 0}.ci1{background-position:8.3333% 0}.ci2{background-position:16.6667% 0}.ci3{background-position:25% 0}.ci4{background-position:33.3333% 0}.ci5{background-position:41.6667% 0}.ci6{background-position:50% 0}.ci7{background-position:58.3333% 0}.ci8{background-position:66.6667% 0}.ci9{background-position:75% 0}.ci10{background-position:83.3333% 0}.ci11{background-position:91.6667% 0}.ci12{background-position:100% 0}
 .pf{background-image:url(./assets/2450d324b349991ba676a87b7b26f908.jpg);background-size:1800% 100%;background-repeat:no-repeat}
@@ -25,167 +37,157 @@ a{color:#0B3D91}a:hover{color:#9B0B4F}
 .k5000{animation:k5000 2.2s .3s cubic-bezier(.2,.7,.2,1) forwards}@keyframes k5000{to{--n:5000}}
 .k7{animation:k7 1.6s .3s ease-out forwards}@keyframes k7{to{--n:7}}
 .k100{animation:k100 2s .3s cubic-bezier(.2,.7,.2,1) forwards}@keyframes k100{to{--n:100}}
+.k95{animation:k95 1.8s .3s ease-out forwards}@keyframes k95{to{--n:95}}
 .k2015{animation:k2015 2.2s .3s cubic-bezier(.2,.7,.2,1) forwards}@keyframes k2015{from{--n:1990}to{--n:2015}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes marquee{to{transform:translateX(-50%)}}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(155,11,79,.45)}80%,100%{box-shadow:0 0 0 12px rgba(155,11,79,0)}}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(154,9,76,.45)}80%,100%{box-shadow:0 0 0 12px rgba(154,9,76,0)}}
 @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
 .rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
 .d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}.d5{animation-delay:.7s}
 .ecg path{stroke-dasharray:760;stroke-dashoffset:760;animation:draw 2.4s .6s ease forwards}
 .bob{animation:bob 5s ease-in-out infinite}.bob2{animation:bob 6s 1.2s ease-in-out infinite}
 .ping{animation:ping 1.8s ease-out infinite}
-.heroimg{overflow:hidden;border-radius:32px}.heroimg img{animation:kenburns 2.4s cubic-bezier(.2,.7,.2,1) both}
+.heroimg{overflow:hidden;border-radius:0}.heroimg img{animation:kenburns 2.4s cubic-bezier(.2,.7,.2,1) both}
 .mq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.mq-track{display:flex;gap:56px;width:max-content;animation:marquee 38s linear infinite}
+.mq-track{display:flex;align-items:center;gap:64px;width:max-content;animation:marquee 38s linear infinite}
+.brandlogo{height:58px;width:auto;max-width:190px;object-fit:contain;display:block}
 .mq:hover .mq-track{animation-play-state:paused}
-.lift{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}.lift:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(10,31,68,.12)}
-.zoom{overflow:hidden;border-radius:24px}.zoom img{display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}.zoom:hover img{transform:scale(1.06)}
-.btn{transition:transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(10,31,68,.18)}
-.btn svg{transition:transform .2s}.btn:hover svg{transform:translateX(4px)}
+.lift{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;box-shadow:0 0 10px rgba(0,0,0,.08)}.lift:hover{transform:translateY(-4px);box-shadow:0 8px 18px rgba(54,52,142,.14)}
+.zoom{overflow:hidden;border-radius:0}.zoom img{display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}.zoom:hover img{transform:scale(1.06)}
+.btn{text-transform:none;letter-spacing:0;font-size:16px!important;font-weight:600;border-radius:0!important;transition:background .2s,color .2s}.btn:hover{background:#121C33!important;color:#FFFFFF!important;box-shadow:none}
+.btn svg{transition:transform .2s}.btn:hover svg{transform:translateX(4px);stroke:#292929}
 @supports (animation-timeline: view()){.reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}}
-@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}.ecg path{stroke-dashoffset:0}.k5000{--n:5000}.k7{--n:7}.k100{--n:100}.k2015{--n:2015}}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}.ecg path{stroke-dashoffset:0}.k5000{--n:5000}.k7{--n:7}.k100{--n:100}.k95{--n:95}.k2015{--n:2015}}
 </style>
 </helmet>
-<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #0A1F44; background: #FFFFFF; font-size: 16px; line-height: 1.6">
+<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #292929; background: #FFFFFF; font-size: 16px; line-height: 1.6">
 
 <!-- NAV -->
-<header style="border-bottom: 1px solid #E3E9F1; background: #FFFFFF">
-<div style="max-width: 1240px; margin: 0 auto; padding: 18px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="background: #9A094C; color: #FFFFFF; text-align: center; padding: 10px 16px; font-size: 15px; font-weight: 500">Affiliated to Maharashtra Paramedical Council</div>
+<header style="background: #FFFFFF; border-bottom: 1px solid #F0F0F0">
+<div style="max-width: 1276px; margin: 0 auto; padding: 14px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px">
 <a href="#top" aria-label="NYSA School of Healthcare home" style="display: flex; align-items: center; text-decoration: none">
-<img src="./assets/2fe05d73e63277dcf3f09de62fbbb41c.png" alt="NYSA School of Healthcare" style="display: block; height: 52px; width: auto">
+<img src="./assets/2fe05d73e63277dcf3f09de62fbbb41c.png" alt="NYSA School of Healthcare" style="display: block; height: 64px; width: auto">
 </a>
-<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 28px; font-size: 15px; font-weight: 500">
-<a href="#courses" style="text-decoration: none; color: #0A1F44">Courses</a>
-<a href="#why" style="text-decoration: none; color: #0A1F44">Why NYSA</a>
-<a href="#placements" style="text-decoration: none; color: #0A1F44">Placements</a>
-<a href="#campus" style="text-decoration: none; color: #0A1F44">Campus</a>
-<a href="#contact" style="text-decoration: none; color: #0A1F44">Contact</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px">
+<a class="navlink" href="#top">Home</a>
+<a class="navlink" href="#why">About Us</a>
+<a class="navlink" href="#courses">Our Courses</a>
+<a class="navlink" href="https://nysahealthcare.com/blog/">Blog</a>
+<a class="btn" href="#contact" style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; background: #1A2744; color: #FFFFFF; text-decoration: none">Contact Us</a>
+<a href="tel:+919769074323" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #222222; font-weight: 600; font-size: 16px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9A094C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.11a2 2 0 0 1 2.11-.45c.76.24 1.55.41 2.36.54A2 2 0 0 1 22 16.92z"></path></svg>+91 97690 74323</a>
 </nav>
-<div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
-<a href="tel:+919769074323" style="font-size: 15px; font-weight: 600; text-decoration: none; color: #0B3D91">+91 97690 74323</a>
-<a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: #0B3D91; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px">Apply now</a>
-</div>
 </div>
 </header>
 
 <!-- HERO -->
-<section id="top" style="max-width: 1240px; margin: 0 auto; padding: 72px 32px 56px">
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 56px; align-items: center">
-<div style="display: flex; flex-direction: column; gap: 28px">
-<div class="rise" style="display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; padding: 8px 16px; border: 1px solid #E3E9F1; border-radius: 999px; font-size: 14px; font-weight: 600; color: {{accent}}">
-<span class="ping" style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}}"></span>
-Admissions open for 2026
-</div>
-<h1 class="rise d1" style="margin: 0; font-family: Sora, sans-serif; font-weight: 600; font-size: clamp(2.6rem, 5vw, 4.4rem); line-height: 1.04; letter-spacing: -0.035em; color: #0A1F44">Train for the jobs healthcare can't fill.</h1>
-<p class="rise d2" style="margin: 0; max-width: 520px; font-size: 19px; color: #42526B">Govt. and UGC approved paramedical programs, from certificate to postgraduate. Paid internship from your 2nd year, then 100% placement.</p>
-<svg class="ecg" width="100%" height="40" viewBox="0 0 520 40" fill="none" aria-hidden="true" style="max-width: 520px">
-<path d="M0 20 H190 L204 20 L214 4 L226 36 L238 10 L246 20 H520" stroke="#9B0B4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-<div class="rise d3" style="display: flex; flex-wrap: wrap; gap: 14px">
-<a class="btn" href="#contact" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 28px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px">Book free counselling
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-</a>
-<a class="btn" href="#courses" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; border: 1.5px solid #0A1F44; color: #0A1F44; text-decoration: none; font-weight: 600; font-size: 16px">Explore 13 courses</a>
-</div>
-<div class="rise d4" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding-top: 8px">
-<div style="display: flex" aria-hidden="true"><span class="pf av" style="background-position-x: 0%"></span><span class="pf av" style="background-position-x: 17.647%"></span><span class="pf av" style="background-position-x: 52.941%"></span><span class="pf av" style="background-position-x: 64.706%"></span><span class="pf av" style="background-position-x: 88.235%"></span></div>
-<div style="display: flex; flex-direction: column; line-height: 1.35"><strong style="font-family: Sora, sans-serif; font-weight: 600">20,000+ students guided since 2015</strong><span style="font-size: 14px; color: #42526B">Hiring partners include Apollo, Fortis and 100+ more</span></div>
-</div>
-<div class="rise d5" style="display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14px; font-weight: 600; color: #0A1F44">
-<span style="display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7C66" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>Govt. &amp; UGC approved</span>
-<span style="display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7C66" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>Skill India &amp; PMKVY partner</span>
-<span style="display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7C66" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>7 campuses you can visit</span>
-</div>
-</div>
-<div class="rise d2" style="position: relative">
-<div class="heroimg"><img src="./assets/fe47a819b2517ed019b1fb6af49ca6aa.jpg" alt="NYSA paramedical students in blue scrubs" style="display: block; width: 100%; height: 640px; object-fit: cover; object-position: 45% 30%"></div>
-<div class="bob" style="position: absolute; left: -24px; bottom: 48px; background: #FFFFFF; border-radius: 20px; padding: 18px 22px; box-shadow: 0 18px 40px rgba(10,31,68,0.12); display: flex; flex-direction: column; gap: 2px">
-<span style="font-family: Sora, sans-serif; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; color: #0B3D91">100%</span>
-<span style="font-size: 14px; color: #42526B">placement after your course</span>
-</div>
-<div class="bob2" style="position: absolute; right: 24px; top: 24px; background: #0A1F44; color: #FFFFFF; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 500">Paid internship from 2nd year</div>
-</div>
+<section id="top" style="position: relative; min-height: 680px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #1A2744">
+<img src="./assets/fe47a819b2517ed019b1fb6af49ca6aa.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%">
+<div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(16,32,72,.72) 0%, rgba(16,32,72,.5) 55%, rgba(16,32,72,.38) 100%)"></div>
+<div style="position: relative; width: 100%; max-width: 980px; margin: 0 auto; padding: 96px 32px; color: #FFFFFF; text-align: center; display: flex; flex-direction: column; align-items: center">
+<h1 class="rise" style="margin: 0; max-width: 920px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: clamp(2.15rem, 4.4vw, 3.45rem); line-height: 1.12; letter-spacing: -0.03em; color: #FFFFFF">Become a Healthcare Professional<br>Without Paying Fees Upfront</h1>
+<p class="rise d1" style="margin: 20px 0 0; max-width: 760px; font-size: clamp(1.05rem, 1.6vw, 1.25rem); font-weight: 500; line-height: 1.5; color: #FFFFFF">Learn from practising doctors, earn from your 2nd year, and pay only after you're placed. Admissions open for 2026–27.</p>
+<ul class="rise d2" style="margin: 32px auto 0; padding: 0; list-style: none; width: max-content; max-width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; font-size: 18px; line-height: 1.4; text-align: left">
+<li style="display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #FFC53A; flex: 0 0 auto"></span>Maharashtra's Paramedical Council Affiliated Courses</li>
+<li style="display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #FFC53A; flex: 0 0 auto"></span>Modern Infrastructure with Hands-On Training</li>
+<li style="display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #FFC53A; flex: 0 0 auto"></span>Curriculum Designed by Doctors &amp; Healthcare Experts</li>
+<li style="display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #FFC53A; flex: 0 0 auto"></span>Guaranteed Placement Support</li>
+<li style="display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #FFC53A; flex: 0 0 auto"></span>Affiliated with a NAAC Grade A+ Accredited University</li>
+</ul>
 </div>
 </section>
 
 <!-- STATS -->
-<section aria-label="Key numbers" style="border-top: 1px solid #E3E9F1; border-bottom: 1px solid #E3E9F1">
-<div style="max-width: 1240px; margin: 0 auto; padding: 40px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px">
-<div><div style="font-family: Sora, sans-serif; font-size: 44px; font-weight: 600; letter-spacing: -0.03em"><span class="cnt k5000" aria-hidden="true"></span><span aria-hidden="true">+</span><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">5000+</span></div><div style="color: #42526B">students trained</div></div>
-<div><div style="font-family: Sora, sans-serif; font-size: 44px; font-weight: 600; letter-spacing: -0.03em"><span class="cnt k7" aria-hidden="true"></span><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">7</span></div><div style="color: #42526B">campuses in Maharashtra</div></div>
-<div><div style="font-family: Sora, sans-serif; font-size: 44px; font-weight: 600; letter-spacing: -0.03em"><span class="cnt k100" aria-hidden="true"></span><span aria-hidden="true">+</span><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">100+</span></div><div style="color: #42526B">placement partners, India and global</div></div>
-<div><div style="font-family: Sora, sans-serif; font-size: 44px; font-weight: 600; letter-spacing: -0.03em"><span aria-hidden="true">Since </span><span class="cnt k2015" aria-hidden="true"></span><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Since 2015</span></div><div style="color: #42526B">20,000+ students guided</div></div>
+<section aria-label="Key numbers" style="background: #FFFFFF">
+<div class="stats" style="max-width: 1100px; margin: 0 auto; padding: 72px 32px 64px">
+<div style="flex: 1">
+<div class="statn">5,000+</div>
+<div class="statl">Students Served By The Core<br>Team</div>
+</div>
+<div class="statrule" aria-hidden="true"></div>
+<div style="flex: 1">
+<div class="statn"><span class="cnt k7" aria-hidden="true"></span><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">7</span></div>
+<div class="statl">Campuses Across<br>Maharashtra</div>
+</div>
+<div class="statrule" aria-hidden="true"></div>
+<div style="flex: 1">
+<div class="statn"><span class="cnt k100" aria-hidden="true"></span><span aria-hidden="true">+</span><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">100+</span></div>
+<div class="statl">Placement Partners<br>Worldwide</div>
+</div>
+<div class="statrule" aria-hidden="true"></div>
+<div style="flex: 1">
+<div class="statn"><span class="cnt k95" aria-hidden="true"></span><span aria-hidden="true">%</span><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">95%</span></div>
+<div class="statl">Students Secure<br>Placement</div>
+</div>
 </div>
 </section>
 
 <!-- AFFILIATIONS MARQUEE -->
-<section aria-label="Affiliations and hiring partners" style="padding: 36px 0; background: #F2F6FB">
-<p style="margin: 0 0 18px; text-align: center; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6A82">Affiliated universities, govt. schemes &amp; hiring partners</p>
+<section aria-label="Affiliations and hiring partners" style="padding: 36px 0; background: #F2F4F7">
+<p style="margin: 0 0 18px; text-align: center; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B">100+ Industry Affiliations</p>
 <div class="mq">
-<div class="mq-track" style="font-family: Sora, sans-serif; font-size: 22px; font-weight: 600; color: #8392A8; white-space: nowrap">
-<span>Bharat Sevak Samaj</span><span>MSBVEE</span><span>Lingaya's University</span><span>Mangalayatan University</span><span>Alard University</span><span>Skill India</span><span>PMKVY</span><span style="color: #0B3D91">Apollo Hospitals</span><span style="color: #0B3D91">Fortis</span><span style="color: #0B3D91">Pristyn Care</span><span style="color: #0B3D91">Krsnaa Diagnostics</span><span style="color: #0B3D91">Primus Pathology</span>
-<span aria-hidden="true">Bharat Sevak Samaj</span><span aria-hidden="true">MSBVEE</span><span aria-hidden="true">Lingaya's University</span><span aria-hidden="true">Mangalayatan University</span><span aria-hidden="true">Alard University</span><span aria-hidden="true">Skill India</span><span aria-hidden="true">PMKVY</span><span aria-hidden="true" style="color: #0B3D91">Apollo Hospitals</span><span aria-hidden="true" style="color: #0B3D91">Fortis</span><span aria-hidden="true" style="color: #0B3D91">Pristyn Care</span><span aria-hidden="true" style="color: #0B3D91">Krsnaa Diagnostics</span><span aria-hidden="true" style="color: #0B3D91">Primus Pathology</span>
+<div class="mq-track">
+<img class="brandlogo" src="./assets/logos/partner_uni_01.webp" alt="Bharat Sevak Samaj"><img class="brandlogo" src="./assets/logos/partner_uni_03.webp" alt="MSBVEE"><img class="brandlogo" src="./assets/logos/partner_uni_02.webp" alt="Lingaya's University"><img class="brandlogo" src="./assets/logos/partner_uni_04.webp" alt="Mangalayatan University"><img class="brandlogo" src="./assets/logos/partner_uni_05.webp" alt="Alard University"><img class="brandlogo" src="./assets/logos/partner_uni_06.webp" alt="Skill India"><img class="brandlogo" src="./assets/logos/partner_uni_07.webp" alt="PMKVY">
+<img class="brandlogo" src="./assets/logos/partner_uni_01.webp" alt="" aria-hidden="true"><img class="brandlogo" src="./assets/logos/partner_uni_03.webp" alt="" aria-hidden="true"><img class="brandlogo" src="./assets/logos/partner_uni_02.webp" alt="" aria-hidden="true"><img class="brandlogo" src="./assets/logos/partner_uni_04.webp" alt="" aria-hidden="true"><img class="brandlogo" src="./assets/logos/partner_uni_05.webp" alt="" aria-hidden="true"><img class="brandlogo" src="./assets/logos/partner_uni_06.webp" alt="" aria-hidden="true"><img class="brandlogo" src="./assets/logos/partner_uni_07.webp" alt="" aria-hidden="true">
 </div>
 </div>
 </section>
 
 <!-- WHY HEALTHCARE -->
-<section style="max-width: 1240px; margin: 0 auto; padding: 112px 32px">
+<section style="max-width: 1276px; margin: 0 auto; padding: 112px 32px">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 56px; align-items: end">
 <div style="display: flex; flex-direction: column; gap: 18px">
-<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">Why healthcare, why now</span>
-<h2 style="margin: 0; font-family: Sora, sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">One of India's fastest growing sectors needs skilled hands.</h2>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">Committed to Your Growth</h2>
 </div>
-<p style="margin: 0; font-size: 18px; color: #42526B">85% of healthcare jobs today require skilling or upskilling. Demand is strongest in diagnostics, nursing, home care and telemedicine, and rural Maharashtra still lacks trained paramedics.</p>
+<p style="margin: 0; font-size: 18px; color: #4D4D4D">Established in 2015 by Rohit Gokani, CEO & Founder — a veteran in education consultancy with over 20 years of experience — NYSA School of Healthcare is dedicated to shaping careers in paramedical sciences and healthcare education.</p>
 </div>
 <div style="margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
-<div style="background: #F2F6FB; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: Sora, sans-serif; font-size: 48px; font-weight: 600; letter-spacing: -0.03em; color: #0B3D91">2.5M+</span>
-<span style="color: #42526B">paramedical jobs across India, the UK, the US, Germany and beyond</span>
+<div style="background: #F2F4F7; border-radius: 0; padding: 32px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 48px; font-weight: 700; letter-spacing: -0.03em; color: #9A094C">4.5 million</span>
+<span style="color: #4D4D4D">additional allied healthcare professionals by 2030</span>
 </div>
-<div style="background: #F2F6FB; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: Sora, sans-serif; font-size: 48px; font-weight: 600; letter-spacing: -0.03em; color: #0B3D91">$372B</span>
-<span style="color: #42526B">expected size of India's healthcare industry by 2027</span>
+<div style="background: #F2F4F7; border-radius: 0; padding: 32px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 48px; font-weight: 700; letter-spacing: -0.03em; color: #9A094C">200,000+</span>
+<span style="color: #4D4D4D">healthcare jobs expected in Maharashtra by 2026</span>
 </div>
-<div style="background: #0A1F44; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 10px; color: #FFFFFF">
-<span style="font-family: Sora, sans-serif; font-size: 48px; font-weight: 600; letter-spacing: -0.03em">2 lakh+</span>
-<span style="color: #C9D4E6">new healthcare jobs expected in Maharashtra by 2026</span>
+<div style="background: #F7F7F8; border-radius: 0; padding: 32px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 48px; font-weight: 700; letter-spacing: -0.03em; color: #9A094C">100%</span>
+<span style="color: #4D4D4D">Placement Assistance. Learn, Earn, Grow.</span>
 </div>
 </div>
-<p style="margin: 16px 0 0; font-size: 13px; color: #5A6A82">Sources: NSDC, FICCI, NITI Aayog reports.</p>
+<p style="margin: 16px 0 0; font-size: 13px; color: #6B6B6B">According to NITI Aayog.</p>
 </section>
 
 <!-- COURSES -->
-<section id="courses" style="background: #F2F6FB">
-<div style="max-width: 1240px; margin: 0 auto; padding: 112px 32px">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
-<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">Courses · Govt. &amp; UGC approved</span>
-<h2 style="margin: 0; font-family: Sora, sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">Pick a specialisation. Grow from certificate to PG.</h2>
+<section id="courses" style="background: #F7F8FA">
+<div style="max-width: 1276px; margin: 0 auto; padding: 40px 32px 112px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; max-width: 920px; margin: 0 auto 36px">
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.2; letter-spacing: -0.02em; color: #1A1A1A">Courses Affiliated with the Maharashtra's Paramedical Council</h2>
+<p style="margin: 0; font-size: 17px; color: #4D4D4D">According to NITI Aayog, India requires 4.5 million additional allied healthcare professionals by 2030. Maharashtra alone is expected to generate over 200,000 healthcare jobs by 2026. Build your skills and secure a promising career in diagnostics, hospitals, nursing, home care, and telemedicine.</p>
 </div>
-<div role="group" aria-label="Filter by level" style="display: flex; flex-wrap: wrap; gap: 8px">
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px">
+<div role="group" aria-label="Filter by level" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px">
 <sc-for list="{{filters}}" as="f" hint-placeholder-count="5">
-<button type="button" onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="min-height: 44px; padding: 0 18px; border-radius: 999px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; {{f.style}}">{{f.label}}</button>
+<button type="button" onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="min-height: 44px; padding: 0 18px; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; {{f.style}}">{{f.label}}</button>
 </sc-for>
 </div>
 </div>
-<p style="margin: 28px 0 0; color: #42526B; font-size: 15px">Showing {{count}} programs</p>
 <div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px">
 <sc-for list="{{shown}}" as="c" hint-placeholder-count="9">
-<article class="lift reveal" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<article class="lift reveal" style="background: #FFFFFF; border-radius: 0; overflow: hidden; display: flex; flex-direction: column">
 <div class="{{c.cls}}" role="img" aria-label="{{c.name}}"></div>
 <div style="padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1">
 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px">
-<h3 style="margin: 0; font-family: Sora, sans-serif; font-size: 19px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em">{{c.name}}</h3>
-<span style="font-family: Sora, sans-serif; font-size: 13px; color: #8392A8">{{c.num}}</span>
+<h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em">{{c.name}}</h3>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; color: #7A7A7A">{{c.num}}</span>
 </div>
-<p style="margin: 0; font-size: 15px; color: #42526B; flex-grow: 1">{{c.desc}}</p>
+<p style="margin: 0; font-size: 15px; color: #4D4D4D; flex-grow: 1">{{c.desc}}</p>
 <div style="display: flex; flex-wrap: wrap; gap: 6px">
 <sc-for list="{{c.levels}}" as="l" hint-placeholder-count="2">
-<span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: #E8EEF7; color: #0B3D91">{{l}}</span>
+<span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 0; background: #F8EEF3; color: #9A094C">{{l}}</span>
 </sc-for>
 </div>
 </div>
@@ -196,81 +198,78 @@ Admissions open for 2026
 </section>
 
 <!-- WHY NYSA -->
-<section id="why" style="max-width: 1240px; margin: 0 auto; padding: 112px 32px">
+<section id="why" style="max-width: 1276px; margin: 0 auto; padding: 112px 32px">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 64px">
 <div style="display: flex; flex-direction: column; gap: 22px">
-<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">Why NYSA</span>
-<h2 style="margin: 0; font-family: Sora, sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">Counselling. Education. Placements. Under one roof.</h2>
-<p style="margin: 0; font-size: 18px; color: #42526B">Positioned as India's first integrated healthcare college, with a curriculum designed by doctors and healthcare experts.</p>
-<div style="margin-top: 12px; background: #0A1F44; color: #FFFFFF; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; gap: 18px">
-<span style="font-size: 14px; color: #C9D4E6">Your journey at NYSA</span>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">Why Choose NYSA School of Healthcare</h2>
+<p style="margin: 0; font-size: 18px; color: #4D4D4D">Known for our dedication to healthcare education excellence, our institution offers a history of proven success. Start your journey with us to gain world-class knowledge and skills.</p>
+<div style="margin-top: 12px; background: #FFFFFF; color: #292929; border: 1px solid #F0F0F0; box-shadow: 0 10px 28px rgba(16,24,40,.06); border-radius: 0; padding: 30px; display: flex; flex-direction: column; gap: 18px">
+<span style="font-size: 14px; color: #6B6B6B">Pathways</span>
 <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
-<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 2px solid #4A6290"><span style="font-size: 13px; color: #C9D4E6">Year 1</span><span style="font-family: Sora, sans-serif; font-weight: 600; font-size: 17px; line-height: 1.25">Learn in real labs</span></div>
-<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 2px solid #E58BB3"><span style="font-size: 13px; color: #C9D4E6">From Year 2</span><span style="font-family: Sora, sans-serif; font-weight: 600; font-size: 17px; line-height: 1.25">Paid internship</span></div>
-<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 2px solid #FFFFFF"><span style="font-size: 13px; color: #C9D4E6">After the course</span><span style="font-family: Sora, sans-serif; font-weight: 600; font-size: 17px; line-height: 1.25">100% placement</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 2px solid #C6A04A"><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 17px; line-height: 1.25">Certification</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 2px solid #9A094C"><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 17px; line-height: 1.25">Diploma</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 2px solid #1A2744"><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 17px; line-height: 1.25">Degree → PG</span></div>
 </div>
-<span style="font-size: 14px; color: #C9D4E6">Grow from Certificate to Diploma, Degree and PG.</span>
+<span style="font-size: 14px; color: #6B6B6B">Certification → Diploma → Degree → PG</span>
 </div>
 </div>
 <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
-<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E3E9F1"><span style="font-family: Sora, sans-serif; color: {{accent}}; font-weight: 600">01</span><div><strong style="font-family: Sora, sans-serif; font-weight: 600; font-size: 18px">Paid internship from 2nd year</strong><p style="margin: 4px 0 0; color: #42526B">Learn on the job and earn while you study, so you start recovering your fees early.</p></div></li>
-<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E3E9F1"><span style="font-family: Sora, sans-serif; color: {{accent}}; font-weight: 600">02</span><div><strong style="font-family: Sora, sans-serif; font-weight: 600; font-size: 18px">Then, 100% placement</strong><p style="margin: 4px 0 0; color: #42526B">Finish your course and step into a job, backed by our placement team and 100+ partners.</p></div></li>
-<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E3E9F1"><span style="font-family: Sora, sans-serif; color: {{accent}}; font-weight: 600">03</span><div><strong style="font-family: Sora, sans-serif; font-weight: 600; font-size: 18px">100+ industry affiliations</strong><p style="margin: 4px 0 0; color: #42526B">Labs, diagnostic brands and hospitals for hands-on training.</p></div></li>
-<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E3E9F1"><span style="font-family: Sora, sans-serif; color: {{accent}}; font-weight: 600">04</span><div><strong style="font-family: Sora, sans-serif; font-weight: 600; font-size: 18px">Degree affiliated with the Paramedical Council</strong><p style="margin: 4px 0 0; color: #42526B">Programs run with recognised partner universities.</p></div></li>
-<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E3E9F1"><span style="font-family: Sora, sans-serif; color: {{accent}}; font-weight: 600">05</span><div><strong style="font-family: Sora, sans-serif; font-weight: 600; font-size: 18px">Full career support, India and overseas</strong><p style="margin: 4px 0 0; color: #42526B">From counselling to placement to international opportunities.</p></div></li>
-<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E3E9F1; border-bottom: 1px solid #E3E9F1"><span style="font-family: Sora, sans-serif; color: {{accent}}; font-weight: 600">06</span><div><strong style="font-family: Sora, sans-serif; font-weight: 600; font-size: 18px">Pan-Maharashtra presence</strong><p style="margin: 4px 0 0; color: #42526B">7 regional offices and campuses, close to home.</p></div></li>
+<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E7E8EA"><span style="font-family: 'Plus Jakarta Sans', sans-serif; color: {{accent}}; font-weight: 600">01</span><div><strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 18px">India's First Integrated Healthcare Institute</strong></div></li>
+<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E7E8EA"><span style="font-family: 'Plus Jakarta Sans', sans-serif; color: {{accent}}; font-weight: 600">02</span><div><strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 18px">Recover your fees while you learn</strong><p style="margin: 4px 0 0; color: #4D4D4D">On-the-Job Learning + Earning</p></div></li>
+<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E7E8EA"><span style="font-family: 'Plus Jakarta Sans', sans-serif; color: {{accent}}; font-weight: 600">03</span><div><strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 18px">100% Placement Assistance</strong><p style="margin: 4px 0 0; color: #4D4D4D">Learn, Earn, Grow</p></div></li>
+<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E7E8EA"><span style="font-family: 'Plus Jakarta Sans', sans-serif; color: {{accent}}; font-weight: 600">04</span><div><strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 18px">100+ Industry Affiliations</strong><p style="margin: 4px 0 0; color: #4D4D4D">Labs, Diagnostic Brands, and Hospitals</p></div></li>
+<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E7E8EA"><span style="font-family: 'Plus Jakarta Sans', sans-serif; color: {{accent}}; font-weight: 600">05</span><div><strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 18px">Full Career Support</strong><p style="margin: 4px 0 0; color: #4D4D4D">from Counselling to Placement to Overseas Opportunities</p></div></li>
+<li style="display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid #E7E8EA; border-bottom: 1px solid #E7E8EA"><span style="font-family: 'Plus Jakarta Sans', sans-serif; color: {{accent}}; font-weight: 600">06</span><div><strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 18px">Pan-Maharashtra Presence</strong><p style="margin: 4px 0 0; color: #4D4D4D">7 Regional Offices</p></div></li>
 </ol>
 </div>
 </section>
 
 <!-- WHO CAN APPLY -->
-<section style="max-width: 1240px; margin: 0 auto; padding: 0 32px 112px">
-<div style="border: 1px solid #E3E9F1; border-radius: 28px; overflow: hidden; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); align-items: stretch">
+<section style="max-width: 1276px; margin: 0 auto; padding: 0 32px 112px">
+<div style="border: 1px solid #E7E8EA; border-radius: 0; overflow: hidden; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); align-items: stretch">
 <img src="./assets/d03ac6ccec7ae5317862e55df8020751.jpg" alt="Paramedical students and nurses in uniform" style="display: block; width: 100%; height: 100%; min-height: 340px; object-fit: cover; object-position: center 30%">
 <div style="padding: 48px; display: flex; flex-direction: column; justify-content: center; gap: 28px">
-<h2 style="margin: 0; font-family: Sora, sans-serif; font-weight: 600; font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.1; letter-spacing: -0.03em">Who can apply?</h2>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.1; letter-spacing: -0.03em">Who can apply?</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 32px">
-<div style="display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B3D91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span>10th or 12th pass</span></div>
-<div style="display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B3D91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span>All streams, science highly preferred</span></div>
-<div style="display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B3D91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span>Graduates from any stream</span></div>
-<div style="display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B3D91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span>Anyone aiming for a global healthcare career</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9A094C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span>10th or 12th Pass</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9A094C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span>Open to all streams (science background is highly preferred)</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9A094C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span>Graduates from any stream with basic technical knowledge in healthcare</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9A094C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span>Individuals aiming for global healthcare careers</span></div>
 </div>
 </div>
 </div>
 </section>
 
 <!-- PLACEMENTS -->
-<section id="placements" style="background: #0A1F44; color: #FFFFFF">
-<div style="max-width: 1240px; margin: 0 auto; padding: 112px 32px">
+<section id="placements" style="background: #FFFFFF; color: #292929">
+<div style="max-width: 1276px; margin: 0 auto; padding: 112px 32px">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 56px; align-items: end">
 <div style="display: flex; flex-direction: column; gap: 14px">
-<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #E58BB3">Placements</span>
-<h2 style="margin: 0; font-family: Sora, sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">Where our students work.</h2>
+<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #9A094C">Placements</span>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">Placement Partners</h2>
 </div>
-<p style="margin: 0; font-size: 18px; color: #C9D4E6">Hospitals, diagnostic chains and pathology labs hire NYSA graduates across radiology, lab technology, OT and hospital administration.</p>
+<p style="margin: 0; font-size: 18px; color: #4D4D4D">100+ Placement Partners Worldwide</p>
 </div>
-<div style="margin-top: 48px; display: flex; flex-wrap: wrap; gap: 12px">
-<span style="padding: 14px 24px; border: 1px solid #2C4470; border-radius: 999px; font-family: Sora, sans-serif; font-weight: 500">Apollo Hospitals</span>
-<span style="padding: 14px 24px; border: 1px solid #2C4470; border-radius: 999px; font-family: Sora, sans-serif; font-weight: 500">Fortis</span>
-<span style="padding: 14px 24px; border: 1px solid #2C4470; border-radius: 999px; font-family: Sora, sans-serif; font-weight: 500">Pristyn Care</span>
-<span style="padding: 14px 24px; border: 1px solid #2C4470; border-radius: 999px; font-family: Sora, sans-serif; font-weight: 500">Pristine Healthcare &amp; Diagnostics</span>
-<span style="padding: 14px 24px; border: 1px solid #2C4470; border-radius: 999px; font-family: Sora, sans-serif; font-weight: 500">Apex Healthcare</span>
-<span style="padding: 14px 24px; border: 1px solid #2C4470; border-radius: 999px; font-family: Sora, sans-serif; font-weight: 500">Primus Pathology &amp; Diagnostics</span>
-<span style="padding: 14px 24px; border: 1px solid #2C4470; border-radius: 999px; font-family: Sora, sans-serif; font-weight: 500">Krsnaa Diagnostics</span>
-<span style="padding: 14px 24px; border: 1px solid #2C4470; border-radius: 999px; font-family: Sora, sans-serif; font-weight: 500">Neptune Diagnostic Center</span>
+<div style="margin-top: 48px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center">
+<img src="./assets/logos/placement_partners_03.webp" alt="Apollo Hospitals" style="height: 64px; width: auto; max-width: 180px; object-fit: contain; background: #FFFFFF; border: 1px solid #E6E6E6; padding: 10px 16px">
+<img src="./assets/logos/placement_partners_05.webp" alt="Fortis" style="height: 64px; width: auto; max-width: 180px; object-fit: contain; background: #FFFFFF; border: 1px solid #E6E6E6; padding: 10px 16px">
+<img src="./assets/logos/placement_partners_01.webp" alt="Pristyn Care" style="height: 64px; width: auto; max-width: 200px; object-fit: contain; background: #FFFFFF; border: 1px solid #E6E6E6; padding: 10px 16px">
+<img src="./assets/logos/placement_partners_02-1.webp" alt="Pristine Healthcare &amp; Diagnostics" style="height: 64px; width: auto; max-width: 200px; object-fit: contain; background: #FFFFFF; border: 1px solid #E6E6E6; padding: 10px 16px">
+<img src="./assets/logos/placement_partners_04.webp" alt="Apex Healthcare" style="height: 64px; width: auto; max-width: 180px; object-fit: contain; background: #FFFFFF; border: 1px solid #E6E6E6; padding: 10px 16px">
+<img src="./assets/logos/placement_partners_06.webp" alt="Primus Pathology &amp; Diagnostics" style="height: 64px; width: auto; max-width: 200px; object-fit: contain; background: #FFFFFF; border: 1px solid #E6E6E6; padding: 10px 16px">
 </div>
 <div style="margin: 80px 0 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px">
-<h3 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 600; letter-spacing: -0.02em">Real students. Real jobs.</h3>
-<span style="font-size: 15px; color: #C9D4E6">Recent NYSA placement highlights</span>
+<h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 600; letter-spacing: -0.02em">Alumni</h3>
+<span style="font-size: 15px; color: #4D4D4D">Students Secure Placement</span>
 </div>
 <div style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px">
 <sc-for list="{{placed}}" as="p" hint-placeholder-count="18">
-<figure class="lift reveal" style="margin: 0; background: #12295A; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column">
+<figure class="lift reveal" style="margin: 0; background: #FFFFFF; border: 1px solid #F0F0F0; border-radius: 0; overflow: hidden; display: flex; flex-direction: column">
 <div class="pf" role="img" aria-label="Photo of {{p.name}}" style="aspect-ratio: 6/7; width: 100%; {{p.pos}}"></div>
 <figcaption style="padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 2px">
-<span style="font-family: Sora, sans-serif; font-weight: 600; font-size: 15px">{{p.name}}</span>
-<span style="font-size: 13px; color: #E58BB3; font-weight: 600">{{p.course}}</span>
-<span style="font-size: 13px; color: #C9D4E6">{{p.org}}</span>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 15px">{{p.name}}</span>
+<span style="font-size: 13px; color: #9A094C; font-weight: 600">{{p.course}}</span>
+<span style="font-size: 13px; color: #4D4D4D">{{p.org}}</span>
 </figcaption>
 </figure>
 </sc-for>
@@ -279,13 +278,12 @@ Admissions open for 2026
 </section>
 
 <!-- CAMPUS -->
-<section id="campus" style="max-width: 1240px; margin: 0 auto; padding: 112px 32px">
+<section id="campus" style="max-width: 1276px; margin: 0 auto; padding: 112px 32px">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
-<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">Campus &amp; life</span>
-<h2 style="margin: 0; font-family: Sora, sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">Learn in real labs, not just classrooms.</h2>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">Modern Infrastructure with Hands-On Training</h2>
 </div>
-<p style="margin: 0; max-width: 420px; color: #42526B">Kandivali campus at Esplanade Education Society: operation theatre, X-ray room, laboratory, patient ward and auditorium.</p>
+<p style="margin: 0; max-width: 420px; color: #4D4D4D">Our vision is to reach every aspiring healthcare student across Maharashtra.</p>
 </div>
 <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px">
 <div class="zoom reveal" style="grid-column: span 2"><img src="./assets/160c6d95fbd8229ac74c9348238a677d.jpg" alt="NYSA Kandivali campus reception" style="width: 100%; height: 340px; object-fit: cover"></div>
@@ -297,69 +295,93 @@ Admissions open for 2026
 </section>
 
 <!-- LEADERSHIP -->
-<section style="background: #F2F6FB">
-<div style="max-width: 1240px; margin: 0 auto; padding: 112px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 64px">
+<section style="background: #F2F4F7">
+<div style="max-width: 1276px; margin: 0 auto; padding: 112px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 64px">
 <figure class="reveal" style="margin: 0; display: flex; flex-direction: column; gap: 24px">
-<div class="zoom" style="border-radius: 24px"><img src="./assets/9b1ecf67519ee79b77028e6ef08533db.jpg" alt="Rohit Gokani, Founder and CEO of NYSA School of Healthcare, in his office" style="width: 100%; height: 380px; object-fit: cover; object-position: center 30%"></div>
-<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">From the founder</span>
-<blockquote style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(1.6rem, 2.6vw, 2.2rem); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em">"Our goal is to make sure that no dream is left behind, and every student finds their way forward."</blockquote>
-<figcaption style="display: flex; flex-direction: column"><strong style="font-family: Sora, sans-serif; font-weight: 600; font-size: 18px">Rohit Gokani</strong><span style="color: #42526B">Founder &amp; CEO · 20+ years in education consultancy</span></figcaption>
+<figcaption style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(2.4rem, 4vw, 3.4rem); line-height: 1.05; letter-spacing: -0.03em; color: {{accent}}">CEO & Founder</span>
+<strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: clamp(1.35rem, 2vw, 1.75rem)">Rohit Gokani</strong>
+</figcaption>
+<div class="zoom" style="border-radius: 0"><img src="./assets/9b1ecf67519ee79b77028e6ef08533db.jpg" alt="Rohit Gokani, Founder and CEO of NYSA School of Healthcare, in his office" style="width: 100%; height: 380px; object-fit: cover; object-position: center top; transform-origin: center top"></div>
+<blockquote style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.4rem, 2.2vw, 1.8rem); font-weight: 500; line-height: 1.35; letter-spacing: -0.02em">Established in 2015 by Rohit Gokani, CEO & Founder — a veteran in education consultancy with over 20 years of experience — NYSA School of Healthcare is dedicated to shaping careers in paramedical sciences and healthcare education.</blockquote>
 </figure>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; align-content: start">
 <sc-for list="{{team}}" as="t" hint-placeholder-count="6">
-<div style="background: #FFFFFF; border-radius: 18px; padding: 20px 22px; display: flex; flex-direction: column; gap: 2px">
-<span style="font-family: Sora, sans-serif; font-weight: 600">{{t.name}}</span>
+<div style="background: #FFFFFF; border-radius: 0; padding: 20px 22px; display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600">{{t.name}}</span>
 <span style="font-size: 14px; color: {{accent}}; font-weight: 600">{{t.role}}</span>
-<span style="font-size: 14px; color: #42526B">{{t.note}}</span>
+<span style="font-size: 14px; color: #4D4D4D">{{t.note}}</span>
 </div>
 </sc-for>
 </div>
 </div>
 </section>
 
+<!-- REVIEWS -->
+<section id="reviews" style="background: #FFFFFF">
+<div style="max-width: 1180px; margin: 0 auto; padding: 96px 32px 72px">
+<h2 style="margin: 0 0 48px; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: clamp(2rem, 3.6vw, 2.8rem); letter-spacing: -0.02em; color: #1A1A1A">Student Reviews</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px">
+<sc-for list="{{reviewShown}}" as="r" hint-placeholder-count="3">
+<article class="revcard">
+<div style="display: flex; align-items: center; gap: 14px">
+<span class="pf revav" role="img" aria-label="Photo of {{r.name}}" style="{{r.pos}}"></span>
+<div>
+<strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px">{{r.name}}</strong>
+<div style="font-size: 14px; color: #6B6B6B">{{r.role}}</div>
+<div class="stars" aria-label="5 stars">★★★★★</div>
+</div>
+</div>
+<p style="margin: 0; color: #3A3A3A; font-size: 15px; line-height: 1.65">{{r.quote}}</p>
+</article>
+</sc-for>
+</div>
+<div style="display: flex; justify-content: center; gap: 28px; margin-top: 28px">
+<button class="arrow" type="button" onClick="{{prevReviews}}" aria-label="Previous reviews">←</button>
+<button class="arrow" type="button" onClick="{{nextReviews}}" aria-label="Next reviews">→</button>
+</div>
+</div>
+</section>
+
 <!-- GRADUATION BAND -->
-<section aria-label="Admissions call to action" style="position: relative; overflow: hidden; background: #0A1F44">
-<img src="./assets/1d5c385ea7f481cfef5de61f986206ba.jpg" alt="NYSA graduates in caps and gowns" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%; opacity: 0.55">
-<div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 120px 32px; display: flex; flex-direction: column; gap: 24px; color: #FFFFFF">
-<h2 style="margin: 0; max-width: 640px; font-family: Sora, sans-serif; font-weight: 600; font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1.05; letter-spacing: -0.035em">Your graduation day is closer than you think.</h2>
-<p style="margin: 0; max-width: 520px; font-size: 18px; color: #E3E9F1">Paid internship from 2nd year. 100% placement after. Admissions for 2026 are open across all 7 campuses.</p>
+<section aria-label="Admissions call to action" style="position: relative; overflow: hidden; background: #36348E">
+<img src="./assets/1d5c385ea7f481cfef5de61f986206ba.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%">
+<div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(18,36,78,.78), rgba(28,52,110,.55))"></div>
+<div style="position: relative; max-width: 1276px; margin: 0 auto; padding: 120px 32px; display: flex; flex-direction: column; gap: 24px; color: #FFFFFF">
+<h2 style="margin: 0; max-width: 640px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1.05; letter-spacing: -0.035em">100% Placement Assistance</h2>
+<p style="margin: 0; max-width: 520px; font-size: 18px; color: #E7E8EA">Recover your fees while you learn. On-the-Job Learning + Earning.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 14px">
-<a href="#contact" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; background: #FFFFFF; color: #0A1F44; text-decoration: none; font-weight: 600">Book free counselling</a>
-<a href="tel:+919769074323" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; border: 1.5px solid #FFFFFF; color: #FFFFFF; text-decoration: none; font-weight: 600">Call +91 97690 74323</a>
+<a class="btn" href="#contact" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 0; background: #1A2744; color: #FFFFFF; text-decoration: none; font-weight: 600">Contact Us</a>
+<a class="btn" href="tel:+919769074323" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 0; border: 1.5px solid #FFFFFF; background: transparent; color: #FFFFFF; text-decoration: none; font-weight: 600">Call +91 97690 74323</a>
 </div>
 </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" style="max-width: 1240px; margin: 0 auto; padding: 112px 32px">
+<section id="contact" style="max-width: 1276px; margin: 0 auto; padding: 112px 32px">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 64px">
 <div style="display: flex; flex-direction: column; gap: 22px">
-<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">Admissions 2026</span>
-<h2 style="margin: 0; font-family: Sora, sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">Talk to a counsellor. It's free.</h2>
-<p style="margin: 0; color: #42526B; font-size: 18px">Share your details and our team will call you back to help pick the right course and campus.</p>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px">
-<div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: #F2F6FB; border-radius: 16px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B3D91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"></path></svg><span style="font-size: 14px"><strong>Visit before you decide.</strong> Tour the OT, X-ray room and labs at Kandivali.</span></div>
-<div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: #F2F6FB; border-radius: 16px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B3D91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><span style="font-size: 14px"><strong>Your details stay private.</strong> Used only to call you back about admissions.</span></div>
-</div>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">Get in Touch with Us</h2>
+<p style="margin: 0; color: #4D4D4D; font-size: 18px">We're here to support your journey in healthcare.</p>
 <form style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Full name<input type="text" placeholder="Your name" style="min-height: 52px; padding: 0 16px; border: 1px solid #C9D4E6; border-radius: 14px; font-family: inherit; font-size: 16px; color: #0A1F44; background: #FFFFFF"></label>
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Mobile number<input type="tel" placeholder="+91" style="min-height: 52px; padding: 0 16px; border: 1px solid #C9D4E6; border-radius: 14px; font-family: inherit; font-size: 16px; color: #0A1F44; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Full name<input type="text" placeholder="Your name" style="min-height: 52px; padding: 0 16px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Mobile number<input type="tel" placeholder="+91" style="min-height: 52px; padding: 0 16px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"></label>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Course of interest<select style="min-height: 52px; padding: 0 14px; border: 1px solid #C9D4E6; border-radius: 14px; font-family: inherit; font-size: 16px; color: #0A1F44; background: #FFFFFF"><option>Medical Lab Technology</option><option>Radiology &amp; Imaging</option><option>Operation Theatre Technology</option><option>Physiotherapy</option><option>Pharmacy</option><option>Not sure yet</option></select></label>
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Nearest campus<select style="min-height: 52px; padding: 0 14px; border: 1px solid #C9D4E6; border-radius: 14px; font-family: inherit; font-size: 16px; color: #0A1F44; background: #FFFFFF"><option>Mumbai</option><option>Pune</option><option>Nashik</option><option>Nagpur</option><option>Jalgaon</option><option>Latur</option><option>Kolhapur</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Course of interest<select style="min-height: 52px; padding: 0 14px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"><option>Medical Lab Technology</option><option>Radiology &amp; Imaging</option><option>Operation Theatre Technology</option><option>Physiotherapy</option><option>Pharmacy</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Nearest campus<select style="min-height: 52px; padding: 0 14px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"><option>Mumbai</option><option>Pune</option><option>Nashik</option><option>Nagpur</option><option>Jalgaon</option><option>Latur</option><option>Kolhapur</option></select></label>
 </div>
-<button class="btn" type="button" style="min-height: 56px; border: none; border-radius: 999px; background: {{accent}}; color: #FFFFFF; font-family: inherit; font-size: 17px; font-weight: 600; cursor: pointer">Request a call back</button>
-<span style="font-size: 14px; color: #42526B">Or call <a href="tel:+919769074323">+91 97690 74323</a> · <a href="mailto:info@nysahealthcare.com">info@nysahealthcare.com</a></span>
+<button class="btn" type="button" style="min-height: 52px; border: none; border-radius: 0; background: #1A2744; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer; align-self: flex-start; padding: 0 28px">Get in Touch</button>
+<span style="font-size: 14px; color: #4D4D4D">Or call <a href="tel:+919769074323">+91 97690 74323</a> · <a href="mailto:info@nysahealthcare.com">info@nysahealthcare.com</a></span>
 </form>
 </div>
 <div style="display: flex; flex-direction: column; gap: 0">
-<h3 style="margin: 0 0 12px; font-family: Sora, sans-serif; font-size: 20px; font-weight: 600">7 offices across Maharashtra</h3>
+<h3 style="margin: 0 0 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 600">Visit your nearest center</h3>
 <sc-for list="{{offices}}" as="o" hint-placeholder-count="7">
-<div style="display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid #E3E9F1">
-<span style="font-family: Sora, sans-serif; font-weight: 600; color: #0B3D91">{{o.city}}</span>
-<span style="font-size: 15px; color: #42526B">{{o.addr}}</span>
+<div style="display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid #E7E8EA">
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; color: #9A094C">{{o.city}}</span>
+<span style="font-size: 15px; color: #4D4D4D">{{o.addr}}</span>
 </div>
 </sc-for>
 </div>
@@ -367,36 +389,36 @@ Admissions open for 2026
 </section>
 
 <!-- FOOTER -->
-<footer style="background: #0A1F44; color: #C9D4E6">
-<div style="max-width: 1240px; margin: 0 auto; padding: 48px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; font-size: 14px">
-<img src="./assets/6c2859ea65e81ff57bd24c6d02322c62.png" alt="NYSA School of Healthcare" style="display: block; height: 64px; width: auto">
+<footer style="background: #FFFFFF; color: #4D4D4D; border-top: 4px solid #9A094C">
+<div style="max-width: 1276px; margin: 0 auto; padding: 36px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; font-size: 14px">
+<img src="./assets/2fe05d73e63277dcf3f09de62fbbb41c.png" alt="NYSA School of Healthcare" style="display: block; height: 56px; width: auto">
 <span>Mumbai · Nashik · Nagpur · Jalgaon · Latur · Pune · Kolhapur</span>
-<a href="https://nysahealthcare.com" style="color: #FFFFFF">nysahealthcare.com</a>
+<a href="https://nysahealthcare.com" style="color: #9A094C">nysahealthcare.com</a>
 </div>
 </footer>
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#9B0B4F","options":["#9B0B4F","#0B3D91","#0E7C66","#B45309"]},"$preview":{"width":1440,"height":9400}}'>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#9A094C","options":["#9A094C","#36348E","#FFC53A","#2B7258"]},"$preview":{"width":1440,"height":9400}}'>
 class Component extends DCLogic {
-  constructor(props) { super(props); this.state = { level: 'All' }; }
+  constructor(props) { super(props); this.state = { level: 'All', reviewAt: 0 }; }
   renderVals() {
-    const accent = this.props.accent ?? '#9B0B4F';
+    const accent = this.props.accent ?? '#9A094C';
     const C = 'Certificate', D = 'Diploma', G = 'Degree', P = 'Postgraduate';
     const courses = [
-      { name: 'Medical Lab Technology (MLT)', desc: 'Sample collection and analysis with hands-on diagnostic lab training.', levels: [C, D, G, P] },
-      { name: 'Radiology & Imaging Technology', desc: 'Operate X-ray, CT, MRI and ECG with a focus on accuracy and patient safety.', levels: [C, D, G, P] },
-      { name: 'Operation Theatre Technology', desc: 'Assist surgeries: sterilisation, instruments, patient prep, anaesthesia support.', levels: [C, D, G, P] },
-      { name: 'Phlebotomy', desc: 'Safe blood collection for tests, transfusions and donations.', levels: [C] },
-      { name: 'Physiotherapy', desc: 'Treat injuries and disabilities through exercise and physical therapy.', levels: [D, G] },
-      { name: 'Emergency & Trauma Care', desc: 'First aid, triage and stabilisation in high-pressure settings.', levels: [D] },
-      { name: 'Dental Technician', desc: 'Clinical and support roles in dental clinics and hospitals.', levels: [D] },
-      { name: 'Nursing Assistant', desc: 'Patient care roles in hospitals, clinics and community health centres.', levels: [D, G] },
-      { name: 'Pharmacy (D.Pharm)', desc: 'Drug formulation, dispensing, dosage and patient counselling.', levels: [D] },
-      { name: 'Pharmacy (B.Pharm)', desc: 'Pharmacist, drug safety and medical representative careers.', levels: [G] },
-      { name: 'Patient Care', desc: 'Daily care, rehabilitation and wellbeing across care settings.', levels: [D, G] },
-      { name: 'Dialysis Technician', desc: 'Dialysis machine operation and care for kidney patients.', levels: [D] },
-      { name: 'Hospital Administration', desc: 'Hospital operations, facility management and patient services.', levels: [G] }
+      { name: 'Medical Lab Technology (MLT)', desc: 'Covers sample collection and analysis with hands-on lab training in diagnostic procedures using medical equipment.', levels: [C, D, G, P] },
+      { name: 'Radiology Technician & Imaging Technology (RIT)', desc: 'Trains students to operate X-rays, CT scans, MRIs, and ECGs emphasizing diagnostic accuracy and patient safety.', levels: [C, D, G, P] },
+      { name: 'Operation Theatre Technician (OTT)', desc: 'Provides hands-on training in assisting surgeries, sterilization, surgical instruments, patient prep, and anesthesia support.', levels: [C, D, G, P] },
+      { name: 'Phlebotomy Technician', desc: 'Teaches safe blood collection for tests, transfusions, or donations with a focus on comfort, hygiene, and sample handling.', levels: [C] },
+      { name: 'Physiotherapy (PT)', desc: 'Trains students to treat injuries and disabilities using exercise, massage, and physical therapy techniques for mobility.', levels: [D, G] },
+      { name: 'Emergency & Trauma Care', desc: 'Equips students to manage life-threatening situations with first aid, triage, and stabilization in high-pressure environments.', levels: [C, D, G, P] },
+      { name: 'Cardiac Care Technician', desc: 'Trains students to assist in diagnosing and treating heart-related conditions using ECG, defibrillators, and cardiac monitors.', levels: [C, D, G, P] },
+      { name: 'Nursing (GNM & ANM)', desc: 'Nursing programs train students for roles in hospitals, clinics, and community health centers.', levels: [C, D, G, P] },
+      { name: 'Pharmacy', desc: 'Covers drug formulation, dispensing, dosage, and patient counseling with practical training in pharmacy settings.', levels: [D] },
+      { name: 'Patient Care', desc: 'Focuses on supporting patients’ daily needs, rehabilitation, and well-being across various healthcare environments.', levels: [D, G] },
+      { name: 'Dialysis Technician', desc: 'Teaches dialysis machine operation, patient monitoring, and care for individuals with kidney-related conditions.', levels: [D] },
+      { name: 'Hospital Management', desc: 'Covers hospital operations, healthcare facility management, and patient services for administrative healthcare roles.', levels: [G] },
+      { name: 'Dental Assistant', desc: 'Trains students to support dentists during procedures, manage dental instruments, prepare patients, and maintain infection control.', levels: [C, D, G, P] }
     ].map((c, i) => ({ ...c, num: String(i + 1).padStart(2, '0'), cls: 'cimg ci' + i }));
     const level = this.state.level;
     const shown = level === 'All' ? courses : courses.filter((c) => c.levels.includes(level));
@@ -405,7 +427,7 @@ class Component extends DCLogic {
       return {
         label: label === P ? 'PG' : label,
         pressed: on ? 'true' : 'false',
-        style: on ? 'background:#0A1F44;color:#FFFFFF;border:1px solid #0A1F44;' : 'background:#FFFFFF;color:#0A1F44;border:1px solid #C9D4E6;',
+        style: on ? 'background:#9A094C;color:#FFFFFF;border:1px solid #9A094C;' : 'background:#FFFFFF;color:#292929;border:1px solid #E6E6E6;',
         pick: () => this.setState({ level: label })
       };
     });
@@ -418,7 +440,7 @@ class Component extends DCLogic {
       { name: 'Ayaan Shaikh', course: 'B.Sc MIT', org: 'Krsnaa Diagnostic' }
     ];
     const team = [
-      { name: 'Rakhi Gokani', role: 'Chief Operating Officer', note: 'Leads academics and operations' },
+      { name: 'Rakhi Gokani', role: 'Chief Operating Officer', note: '' },
       { name: 'Dr. Namrata Nilkar', role: 'Principal', note: 'Master of Physiotherapy, Gold Medalist' },
       { name: 'Dr. Tejal R Panchal', role: 'HOD Nursing', note: 'MD Ayurveda, MUHS' },
       { name: 'Revathi Chettiar', role: 'HOD Radiology', note: 'B.Sc Medical Imaging Technology' },
@@ -443,7 +465,16 @@ class Component extends DCLogic {
       ['Kajal Pal', 'B.Sc MLT', 'Balaji Pathology'], ['Mahi Goradia', 'B.Sc OTT', 'Apex Hospital'], ['Amruta Kadam', 'B.Sc MLT', 'RS Diagnostic'],
       ['Sachin Yadav', 'B.Sc MIT', 'Krsnaa Diagnostic'], ['Nikita Shukla', 'B.Sc MIT', 'Getwell Diagnostic Center'], ['Harsh Bhosle', 'B.Sc MIT', 'Getwell Diagnostic Center']
     ].map(([name, course, org], i) => ({ name, course, org, pos: 'background-position: ' + (i / 17 * 100).toFixed(3) + '% 0;' }));
-    return { accent, shown, count: shown.length, filters, placed, team, offices };
+    const reviews = [
+      { name: 'Pooja R.', role: 'OTT Student', pos: 'background-position-x: 0%', quote: "I didn't clear NEET and thought my dream of working in healthcare was over. But Rohit Sir showed me other powerful options. Thanks to him and NYSA School of Healthcare, I'm now pursuing Operation Theatre Technician Course with full confidence." },
+      { name: 'Sneha T.', role: 'Lab Technology Student', pos: 'background-position-x: 17.647%', quote: "From course selection to practical training, Rohit Sir has supported me like a mentor. I chose MLT and now I'm learning in a real lab environment with placement support. NYSA School of Healthcare really prepares you for the real world." },
+      { name: 'Amit S.', role: 'Radiology Student', pos: 'background-position-x: 35.294%', quote: "After 12th, I had no direction. Then I met Rohit Sir. He guided me with so much patience and helped me choose the Radiology course. Today, I'm proud to say I'm building a career in healthcare." }
+    ];
+    const at = this.state.reviewAt || 0;
+    const reviewShown = [0, 1, 2].map((i) => reviews[(at + i) % reviews.length]);
+    const prevReviews = () => this.setState({ reviewAt: (at + reviews.length - 1) % reviews.length });
+    const nextReviews = () => this.setState({ reviewAt: (at + 1) % reviews.length });
+    return { accent, shown, count: shown.length, filters, placed, team, offices, reviewShown, prevReviews, nextReviews };
   }
 }
 </script>
