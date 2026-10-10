@@ -363,16 +363,18 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 <div style="display: flex; flex-direction: column; gap: 22px">
 <h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; letter-spacing: -0.03em">Get in Touch with Us</h2>
 <p style="margin: 0; color: #4D4D4D; font-size: 18px">We're here to support your journey in healthcare.</p>
-<form style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px">
+<form id="enquiry" style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Full name<input type="text" placeholder="Your name" style="min-height: 52px; padding: 0 16px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"></label>
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Mobile number<input type="tel" placeholder="+91" style="min-height: 52px; padding: 0 16px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Full name<input type="text" name="name" required autocomplete="name" placeholder="Your name" style="min-height: 52px; padding: 0 16px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Mobile number<input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="+91" style="min-height: 52px; padding: 0 16px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"></label>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Course of interest<select style="min-height: 52px; padding: 0 14px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"><option>Medical Lab Technology</option><option>Radiology &amp; Imaging</option><option>Operation Theatre Technology</option><option>Physiotherapy</option><option>Pharmacy</option></select></label>
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Nearest campus<select style="min-height: 52px; padding: 0 14px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"><option>Mumbai</option><option>Pune</option><option>Nashik</option><option>Nagpur</option><option>Jalgaon</option><option>Latur</option><option>Kolhapur</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Course of interest<select name="course" required style="min-height: 52px; padding: 0 14px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"><option>Medical Lab Technology</option><option>Radiology &amp; Imaging</option><option>Operation Theatre Technology</option><option>Physiotherapy</option><option>Pharmacy</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Nearest campus<select name="campus" required style="min-height: 52px; padding: 0 14px; border: 1px solid #EAEAEA; border-radius: 0; font-family: inherit; font-size: 16px; color: #292929; background: #FFFFFF"><option>Mumbai</option><option>Pune</option><option>Nashik</option><option>Nagpur</option><option>Jalgaon</option><option>Latur</option><option>Kolhapur</option></select></label>
 </div>
-<button class="btn" type="button" style="min-height: 52px; border: none; border-radius: 0; background: #1A2744; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer; align-self: flex-start; padding: 0 28px">Get in Touch</button>
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; height: 0; opacity: 0">
+<button class="btn" type="submit" style="min-height: 52px; border: none; border-radius: 0; background: #1A2744; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer; align-self: flex-start; padding: 0 28px">Get in Touch</button>
+<p data-enquiry-status role="status" style="margin: 0; font-size: 15px; font-weight: 600; color: #2B7258"></p>
 <span style="font-size: 14px; color: #4D4D4D">Or call <a href="tel:+919769074323">+91 97690 74323</a> · <a href="mailto:info@nysahealthcare.com">info@nysahealthcare.com</a></span>
 </form>
 </div>
@@ -477,6 +479,49 @@ class Component extends DCLogic {
     return { accent, shown, count: shown.length, filters, placed, team, offices, reviewShown, prevReviews, nextReviews };
   }
 }
+</script>
+<script>
+document.addEventListener('submit', function (event) {
+  var form = event.target;
+  if (!form || form.id !== 'enquiry') return;
+  event.preventDefault();
+  var button = form.querySelector('button[type="submit"]');
+  var status = form.querySelector('[data-enquiry-status]');
+  var data = Object.fromEntries(new FormData(form).entries());
+  if (data._honey) return;
+  var label = button.textContent;
+  button.disabled = true;
+  button.textContent = 'Sending…';
+  status.style.color = '#2B7258';
+  status.textContent = '';
+  fetch('https://formsubmit.co/ajax/Rohitmgokani@gmail.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name: data.name,
+      phone: data.phone,
+      course: data.course,
+      campus: data.campus,
+      _subject: 'NYSA admissions enquiry',
+      _template: 'table',
+      _captcha: 'false'
+    })
+  }).then(function (res) {
+    return res.json().then(function (body) { return { ok: res.ok, body: body }; });
+  }).then(function (result) {
+    if (!result.ok || String(result.body && result.body.success) === 'false') throw new Error('send failed');
+    form.reset();
+    status.style.color = '#2B7258';
+    status.textContent = 'Thank you. Your details have been sent. We will be in touch shortly.';
+  }).catch(function () {
+    status.style.color = '#9A094C';
+    status.textContent = 'We could not send this just now. Please call +91 97690 74323.';
+  }).then(function () {
+    button.disabled = true;
+    button.textContent = label;
+    button.disabled = false;
+  });
+});
 </script>
 </body>
 </html>
