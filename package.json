@@ -1,0 +1,7 @@
+{
+  "name": "nysa-landing",
+  "private": true,
+  "dependencies": {
+    "nodemailer": "^10.1.0"
+  }
+}

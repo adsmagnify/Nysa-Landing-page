@@ -494,7 +494,7 @@ document.addEventListener('submit', function (event) {
   button.textContent = 'Sending…';
   status.style.color = '#2B7258';
   status.textContent = '';
-  fetch('https://formsubmit.co/ajax/Rohitmgokani@gmail.com', {
+  fetch('/api/enquiry', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({
@@ -502,24 +502,18 @@ document.addEventListener('submit', function (event) {
       phone: data.phone,
       course: data.course,
       campus: data.campus,
-      _subject: 'NYSA admissions enquiry',
-      _template: 'table',
-      _captcha: 'false'
+      _honey: data._honey || ''
     })
   }).then(function (res) {
-    return res.json().then(function (body) { return { ok: res.ok, body: body }; });
+    return res.json().then(function (body) { return { ok: res.ok && body && body.ok }; }, function () { return { ok: false }; });
   }).then(function (result) {
-    if (!result.ok || String(result.body && result.body.success) === 'false') throw new Error('send failed');
-    form.reset();
-    status.style.color = '#2B7258';
-    status.textContent = 'Thank you. Your details have been sent. We will be in touch shortly.';
+    if (!result.ok) throw new Error('send failed');
+    window.location.assign('/thank-you.html');
   }).catch(function () {
     status.style.color = '#9A094C';
     status.textContent = 'We could not send this just now. Please call +91 97690 74323.';
-  }).then(function () {
-    button.disabled = true;
-    button.textContent = label;
     button.disabled = false;
+    button.textContent = label;
   });
 });
 </script>
