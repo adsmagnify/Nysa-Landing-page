@@ -581,6 +581,25 @@ class Component extends DCLogic {
 }
 </script>
 <script>
+function nysaCookie(name) {
+  var match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+  return match ? decodeURIComponent(match[1]) : '';
+}
+function nysaEventId() {
+  if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = Math.random() * 16 | 0;
+    return (c === 'x' ? r : (r & 3 | 8)).toString(16);
+  });
+}
+function nysaFbc() {
+  var existing = nysaCookie('_fbc');
+  if (existing) return existing;
+  var click = '';
+  try { click = new URLSearchParams(location.search).get('fbclid') || ''; } catch (err) { click = ''; }
+  if (!click) return '';
+  return 'fb.1.' + Date.now() + '.' + click;
+}
 document.addEventListener('submit', function (event) {
   var form = event.target;
   if (!form || form.id !== 'enquiry') return;
@@ -590,6 +609,7 @@ document.addEventListener('submit', function (event) {
   var data = Object.fromEntries(new FormData(form).entries());
   if (data._honey) return;
   var label = button.textContent;
+  var eventId = nysaEventId();
   button.disabled = true;
   button.textContent = 'Sending…';
   status.style.color = '#2B7258';
@@ -602,12 +622,17 @@ document.addEventListener('submit', function (event) {
       phone: data.phone,
       course: data.course,
       campus: data.campus,
-      _honey: data._honey || ''
+      _honey: data._honey || '',
+      event_id: eventId,
+      fbp: nysaCookie('_fbp'),
+      fbc: nysaFbc(),
+      source_url: location.href
     })
   }).then(function (res) {
-    return res.json().then(function (body) { return { ok: res.ok && body && body.ok }; }, function () { return { ok: false }; });
+    return res.json().then(function (body) { return { ok: res.ok && body && body.ok, eventId: body && body.event_id }; }, function () { return { ok: false }; });
   }).then(function (result) {
     if (!result.ok) throw new Error('send failed');
+    try { sessionStorage.setItem('nysa_lead', result.eventId || eventId); } catch (err) {}
     window.location.assign(location.protocol === 'file:' ? 'thank-you.html' : '/thank-you');
   }).catch(function () {
     status.style.color = '#9A094C';

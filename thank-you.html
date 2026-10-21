@@ -22,6 +22,16 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1656142772730961');
 fbq('track', 'PageView');
 </script>
+<script>
+(function () {
+  var id = '';
+  try {
+    id = sessionStorage.getItem('nysa_lead') || '';
+    sessionStorage.removeItem('nysa_lead');
+  } catch (err) {}
+  if (id && window.fbq) fbq('track', 'Lead', {}, { eventID: id });
+})();
+</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1656142772730961&ev=PageView&noscript=1" /></noscript>
 <!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

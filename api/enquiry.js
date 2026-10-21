@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
 const COURSES = [
@@ -24,6 +25,75 @@ function escapeHtml(value) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function sha256(value) {
+  return crypto.createHash('sha256').update(value).digest('hex');
+}
+
+function hashName(value) {
+  const clean = String(value || '').trim().toLowerCase().replace(/[^\p{L}]/gu, '');
+  return clean ? sha256(clean) : '';
+}
+
+function hashPhone(value) {
+  let digits = String(value || '').replace(/\D/g, '');
+  if (digits.length === 10) digits = '91' + digits;
+  if (digits.length === 11 && digits.charAt(0) === '0') digits = '91' + digits.slice(1);
+  if (digits.length < 11 || digits.length > 15) return '';
+  return sha256(digits);
+}
+
+function clientIp(req) {
+  const forwarded = req.headers['x-forwarded-for'];
+  const raw = Array.isArray(forwarded) ? forwarded[0] : String(forwarded || req.headers['x-real-ip'] || '');
+  return raw.split(',')[0].trim().slice(0, 64);
+}
+
+async function sendMetaLead(req, lead) {
+  const token = String(process.env.META_CAPI_TOKEN || '').trim();
+  const pixelId = String(process.env.META_PIXEL_ID || '1656142772730961').replace(/\D/g, '');
+  if (!token || !pixelId) return;
+
+  const names = lead.name.toLowerCase().split(' ').filter(Boolean);
+  const userData = {};
+  const phone = hashPhone(lead.phone);
+  const first = hashName(names[0]);
+  const last = hashName(names.slice(1).join(' '));
+  if (phone) userData.ph = [phone];
+  if (first) userData.fn = [first];
+  if (last) userData.ln = [last];
+
+  const ip = clientIp(req);
+  const agent = text(req.headers['user-agent'], 400);
+  if (ip) userData.client_ip_address = ip;
+  if (agent) userData.client_user_agent = agent;
+  if (/^fb\.1\.\d+\.\d+$/.test(lead.fbp)) userData.fbp = lead.fbp;
+  if (/^fb\.1\.\d+\.[\w-]+$/.test(lead.fbc)) userData.fbc = lead.fbc;
+
+  const payload = {
+    data: [{
+      event_name: 'Lead',
+      event_time: Math.floor(Date.now() / 1000),
+      event_id: lead.eventId,
+      action_source: 'website',
+      event_source_url: lead.sourceUrl,
+      user_data: userData,
+      custom_data: {
+        content_name: lead.course,
+        content_category: lead.campus
+      }
+    }]
+  };
+  const testCode = text(process.env.META_TEST_EVENT_CODE, 40);
+  if (testCode) payload.test_event_code = testCode;
+
+  const response = await fetch('https://graph.facebook.com/v25.0/' + pixelId + '/events?access_token=' + encodeURIComponent(token), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!response.ok) console.error('meta capi failed', response.status);
 }
 
 module.exports = async function handler(req, res) {
@@ -102,5 +172,25 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  res.status(200).json({ ok: true });
+  const eventId = text(body.event_id, 64).replace(/[^a-zA-Z0-9-]/g, '').slice(0, 64) || crypto.randomUUID();
+  const sourceUrl = /^https?:\/\/[^\s]{8,500}$/.test(text(body.source_url, 500))
+    ? text(body.source_url, 500)
+    : 'https://nysahealthcare.co.in/';
+
+  try {
+    await sendMetaLead(req, {
+      name: name,
+      phone: phone,
+      course: course,
+      campus: campus,
+      eventId: eventId,
+      sourceUrl: sourceUrl,
+      fbp: text(body.fbp, 80),
+      fbc: text(body.fbc, 240)
+    });
+  } catch (err) {
+    console.error('meta capi failed');
+  }
+
+  res.status(200).json({ ok: true, event_id: eventId });
 };
