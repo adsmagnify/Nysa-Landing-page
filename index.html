@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8">
 <title>NYSA School of Healthcare | Admissions 2026</title>
+<script>
+if (location.protocol !== 'file:' && /\/index\.html$/i.test(location.pathname)) {
+  history.replaceState(null, '', '/' + location.search + location.hash);
+}
+</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -73,6 +78,14 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 .lift{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;box-shadow:0 0 10px rgba(0,0,0,.08)}.lift:hover{transform:translateY(-4px);box-shadow:0 8px 18px rgba(54,52,142,.14)}
 .zoom{overflow:hidden;border-radius:0}.zoom img{display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}.zoom:hover img{transform:scale(1.06)}
 .btn{text-transform:none;letter-spacing:0;font-size:16px!important;font-weight:600;border-radius:0!important;transition:background .2s,color .2s}.btn:hover{background:#121C33!important;color:#FFFFFF!important;box-shadow:none}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.cta .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;background:#1A2744;color:#FFFFFF;text-decoration:none}
+.cta .btn.ghost{background:transparent;color:#1A2744;border:1.5px solid #1A2744}
+.cta.center{justify-content:center}
+.cta.on-dark{justify-content:center}
+.cta.on-dark .btn{background:#FFFFFF;color:#1A2744}
+.cta.on-dark .btn.ghost{background:transparent;color:#FFFFFF;border:1.5px solid #FFFFFF}
+.cta.on-dark .btn:hover{background:#FFC53A!important;color:#1A2744!important}
 .btn svg{transition:transform .2s}.btn:hover svg{transform:translateX(4px);stroke:#292929}
 @supports (animation-timeline: view()){.reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}.ecg path{stroke-dashoffset:0}.k5000{--n:5000}.k7{--n:7}.k100{--n:100}.k95{--n:95}.k2015{--n:2015}}
@@ -112,6 +125,10 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 <li style="display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #FFC53A; flex: 0 0 auto"></span>Guaranteed Placement Support</li>
 <li style="display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #FFC53A; flex: 0 0 auto"></span>Affiliated with a NAAC Grade A+ Accredited University</li>
 </ul>
+<div class="cta on-dark rise d3">
+<a class="btn" href="#contact">Apply for 2026–27</a>
+<a class="btn ghost" href="tel:+919769074323">Call +91 97690 74323</a>
+</div>
 </div>
 </section>
 
@@ -174,6 +191,10 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 </div>
 </div>
 <p style="margin: 16px 0 0; font-size: 13px; color: #6B6B6B">According to NITI Aayog.</p>
+<div class="cta">
+<a class="btn" href="#contact">Talk to admissions</a>
+<a class="btn ghost" href="tel:+919769074323">Call +91 97690 74323</a>
+</div>
 </section>
 
 <!-- COURSES -->
@@ -205,9 +226,14 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 <span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 0; background: #F8EEF3; color: #9A094C">{{l}}</span>
 </sc-for>
 </div>
+<a class="btn" href="#contact" style="display: inline-flex; align-items: center; align-self: flex-start; min-height: 44px; margin-top: 8px; padding: 0 18px; background: #1A2744; color: #FFFFFF; text-decoration: none">Apply</a>
 </div>
 </article>
 </sc-for>
+</div>
+<div class="cta center">
+<a class="btn" href="#contact">Enquire about a course</a>
+<a class="btn ghost" href="tel:+919769074323">Call +91 97690 74323</a>
 </div>
 </div>
 </section>
@@ -226,6 +252,10 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 <div style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 2px solid #1A2744"><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 17px; line-height: 1.25">Degree → PG</span></div>
 </div>
 <span style="font-size: 14px; color: #6B6B6B">Certification → Diploma → Degree → PG</span>
+</div>
+<div class="cta" style="margin-top: 8px">
+<a class="btn" href="#contact">Start your application</a>
+<a class="btn ghost" href="tel:+919769074323">Call +91 97690 74323</a>
 </div>
 </div>
 <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
@@ -250,6 +280,10 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 <div style="display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9A094C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span>Open to all streams (science background is highly preferred)</span></div>
 <div style="display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9A094C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span>Graduates from any stream with basic technical knowledge in healthcare</span></div>
 <div style="display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9A094C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span>Individuals aiming for global healthcare careers</span></div>
+</div>
+<div class="cta" style="margin-top: 4px">
+<a class="btn" href="#contact">Check your eligibility</a>
+<a class="btn ghost" href="tel:+919769074323">Call +91 97690 74323</a>
 </div>
 </div>
 </div>
@@ -289,6 +323,10 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 </figure>
 </sc-for>
 </div>
+<div class="cta">
+<a class="btn" href="#contact">Ask about placements</a>
+<a class="btn ghost" href="tel:+919769074323">Call +91 97690 74323</a>
+</div>
 </div>
 </section>
 
@@ -307,6 +345,10 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 <div class="zoom reveal"><img src="./assets/4163e58530a0c541e83c954ec303ecb9.jpg" alt="Students at a cultural day" style="width: 100%; height: 300px; object-fit: cover"></div>
 <div class="zoom reveal"><img src="./assets/37ba79a92202d4670429d306f8bd80d3.jpg" alt="Students on an industry visit to a diagnostics centre" style="width: 100%; height: 300px; object-fit: cover"></div>
 </div>
+<div class="cta">
+<a class="btn" href="#contact">Visit a campus</a>
+<a class="btn ghost" href="tel:+919769074323">Call +91 97690 74323</a>
+</div>
 </section>
 
 <!-- LEADERSHIP -->
@@ -319,6 +361,10 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 </figcaption>
 <div class="zoom" style="border-radius: 0"><img src="./assets/9b1ecf67519ee79b77028e6ef08533db.jpg" alt="Rohit Gokani, Founder and CEO of NYSA School of Healthcare, in his office" style="width: 100%; height: 380px; object-fit: cover; object-position: center top; transform-origin: center top"></div>
 <blockquote style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.4rem, 2.2vw, 1.8rem); font-weight: 500; line-height: 1.35; letter-spacing: -0.02em">Established in 2015 by Rohit Gokani, CEO & Founder — a veteran in education consultancy with over 20 years of experience — NYSA School of Healthcare is dedicated to shaping careers in paramedical sciences and healthcare education.</blockquote>
+<div class="cta" style="margin-top: 0">
+<a class="btn" href="#contact">Speak with admissions</a>
+<a class="btn ghost" href="tel:+919769074323">Call +91 97690 74323</a>
+</div>
 </figure>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; align-content: start">
 <sc-for list="{{team}}" as="t" hint-placeholder-count="6">
@@ -354,6 +400,10 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 <div style="display: flex; justify-content: center; gap: 28px; margin-top: 28px">
 <button class="arrow" type="button" onClick="{{prevReviews}}" aria-label="Previous reviews">←</button>
 <button class="arrow" type="button" onClick="{{nextReviews}}" aria-label="Next reviews">→</button>
+</div>
+<div class="cta center">
+<a class="btn" href="#contact">Apply now</a>
+<a class="btn ghost" href="tel:+919769074323">Call +91 97690 74323</a>
 </div>
 </div>
 </section>
@@ -523,7 +573,7 @@ document.addEventListener('submit', function (event) {
     return res.json().then(function (body) { return { ok: res.ok && body && body.ok }; }, function () { return { ok: false }; });
   }).then(function (result) {
     if (!result.ok) throw new Error('send failed');
-    window.location.assign('/thank-you.html');
+    window.location.assign(location.protocol === 'file:' ? 'thank-you.html' : '/thank-you');
   }).catch(function () {
     status.style.color = '#9A094C';
     status.textContent = 'We could not send this just now. Please call +91 97690 74323.';
