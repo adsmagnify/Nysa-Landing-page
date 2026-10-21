@@ -30,28 +30,47 @@ fbq('track', 'PageView');
 body{margin:0;background:#FFFFFF;color:#292929;font-family:"DM Sans",system-ui,sans-serif;font-size:16px;line-height:1.6}
 a{color:#9A094C}a:hover{color:#6E0736}
 h1,h2{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800}
-.navlink{color:#9A094C;text-decoration:none;font-weight:500;font-size:16px}
-.navlink:hover{color:#6E0736}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;background:#1A2744;color:#FFFFFF;text-decoration:none;font-weight:600}
 .btn:hover{background:#121C33;color:#FFFFFF}
 .btn-line{background:transparent;color:#1A2744;border:1.5px solid #1A2744}
 .btn-line:hover{background:#1A2744;color:#FFFFFF}
-.topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;max-width:1276px;margin:0 auto;padding:14px 32px}
-.topnav{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:16px 28px;flex:1 1 280px}
+.announce{background:#9A094C;color:#FFFFFF}
+.announce-inner{max-width:1276px;margin:0 auto;padding:11px 32px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;font-size:15px;font-weight:500}
+.announce-mid{text-align:center}
+.announce-side{white-space:nowrap}
+.announce-side.right{justify-self:end;display:inline-flex;align-items:center;gap:8px;color:#FFFFFF;text-decoration:none;font-weight:600}
+.announce-side.right:hover{color:#FFC53A}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:28px;max-width:1276px;margin:0 auto;padding:12px 32px}
+.head-points{display:flex;align-items:stretch;flex:1;margin:0;padding:0;list-style:none;min-height:48px;border:1px solid #E6D7B0;background:#FFFBF3}
+.head-points li{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 12px;white-space:nowrap;color:#1A2744;font-family:"Plus Jakarta Sans",sans-serif;font-weight:600;font-size:14.5px;border-left:1px solid #E6D7B0}
+.head-points li:first-child{border-left:none}
+.head-points b{font-weight:700;font-size:13px;letter-spacing:.06em;color:#9A094C}
+.head-apply{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;background:#1A2744;color:#FFFFFF;text-decoration:none;font-weight:600;white-space:nowrap;flex:0 0 auto}
+.head-apply:hover{background:#121C33;color:#FFFFFF}
+@media(max-width:1100px){.head-points{display:none}}
+@media(max-width:960px){.announce-side,.announce-side.right{display:none}.announce-inner{grid-template-columns:1fr;justify-items:center;padding:10px 16px}}
+@media(max-width:800px){.topbar{justify-content:center;padding:12px 16px}.head-apply{display:none}}
 </style>
 </head>
 <body>
-<div style="background:#9A094C;color:#FFFFFF;text-align:center;padding:10px 16px;font-size:15px;font-weight:500">Affiliated to Maharashtra Paramedical Council</div>
+<div class="announce">
+<div class="announce-inner">
+<span class="announce-side">Admissions open for 2026–27</span>
+<span class="announce-mid">Affiliated to Maharashtra Paramedical Council</span>
+<a class="announce-side right" href="tel:+919769074323">+91 97690 74323</a>
+</div>
+</div>
 <header style="background:#FFFFFF;border-bottom:1px solid #F0F0F0">
 <div class="topbar">
-<a href="index.html" aria-label="NYSA School of Healthcare home" style="display:flex;align-items:center;text-decoration:none">
-<img src="assets/2fe05d73e63277dcf3f09de62fbbb41c.png" alt="NYSA School of Healthcare" style="display:block;height:64px;width:auto">
+<a href="index.html" aria-label="NYSA School of Healthcare home" style="display:flex;align-items:center;flex:0 0 auto;text-decoration:none">
+<img src="assets/2fe05d73e63277dcf3f09de62fbbb41c.png" alt="NYSA School of Healthcare" style="display:block;height:68px;width:auto">
 </a>
-<nav class="topnav" aria-label="Main">
-<a class="navlink" href="index.html">Home</a>
-<a class="navlink" href="index.html#courses">Our Courses</a>
-<a class="btn" href="tel:+919769074323">Call +91 97690 74323</a>
-</nav>
+<ul class="head-points" aria-label="Programme highlights">
+<li><b>01</b>No fees upfront</li>
+<li><b>02</b>Earn from 2nd year</li>
+<li><b>03</b>Pay after placement</li>
+</ul>
+<a class="head-apply" href="index.html#contact">Apply for 2026–27</a>
 </div>
 </header>
 <main style="max-width:760px;margin:0 auto;padding:112px 32px 128px">
