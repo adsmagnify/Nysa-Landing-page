@@ -1,4 +1,4 @@
-var HEADERS = ['Submitted at', 'Name', 'Phone', 'Course', 'Campus', 'Landing page', 'Referrer', 'Source', 'Medium', 'Campaign'];
+var HEADERS = ['Submitted at', 'Name', 'Phone', 'Course', 'Campus', 'Qualification', 'Who decides', 'Best time for a call', 'Landing page', 'Referrer', 'Source', 'Medium', 'Campaign'];
 
 function doPost(e) {
   try {
@@ -11,10 +11,18 @@ function doPost(e) {
     if (sheet.getLastRow() === 0) {
       sheet.appendRow(HEADERS);
       sheet.setFrozenRows(1);
-    } else if (sheet.getRange(1, 1).getValue() !== HEADERS[0]) {
-      sheet.insertRowBefore(1);
-      sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
-      sheet.setFrozenRows(1);
+    } else {
+      var current = sheet.getRange(1, 1, 1, HEADERS.length).getValues()[0];
+      var mismatch = false;
+      for (var i = 0; i < HEADERS.length; i++) {
+        if (current[i] !== HEADERS[i]) mismatch = true;
+      }
+      if (mismatch) {
+        if (current[0] !== HEADERS[0]) sheet.insertRowBefore(1);
+        if (current[5] === 'Landing page') sheet.insertColumnsBefore(6, 3);
+        sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
+        sheet.setFrozenRows(1);
+      }
     }
     var row = sheet.getLastRow() + 1;
     sheet.getRange(row, 3).setNumberFormat('@');
@@ -24,6 +32,9 @@ function doPost(e) {
       data.phone || '',
       data.course || '',
       data.campus || '',
+      data.qualification || '',
+      data.decision || '',
+      data.call_time || '',
       data.page || '',
       data.referrer || '',
       data.utm_source || '',

@@ -10,6 +10,9 @@ const COURSES = [
 ];
 
 const CAMPUSES = ['Mumbai', 'Pune', 'Nashik', 'Nagpur', 'Jalgaon', 'Latur', 'Kolhapur'];
+const QUALIFICATIONS = ['12th (PCB)', '12th (other stream)', 'Diploma', "Bachelor's degree", "Master's degree", 'Other'];
+const DECISIONS = ['I will', 'My parents or family', 'Together'];
+const CALL_TIMES = ['Morning', 'Afternoon', 'Evening'];
 
 function text(value, max) {
   return String(value == null ? '' : value)
@@ -76,6 +79,9 @@ async function saveLeadToSheet(lead) {
       phone: lead.phone,
       course: lead.course,
       campus: lead.campus,
+      qualification: lead.qualification,
+      decision: lead.decision,
+      call_time: lead.call_time,
       page: lead.page,
       referrer: lead.referrer,
       utm_source: lead.utm_source,
@@ -158,9 +164,12 @@ module.exports = async function handler(req, res) {
   const phone = text(body.phone, 20);
   const course = text(body.course, 80);
   const campus = text(body.campus, 40);
+  const qualification = text(body.qualification, 40);
+  const decision = text(body.decision, 40);
+  const callTime = text(body.call_time, 20);
   const digits = phone.replace(/\D/g, '');
 
-  if (name.length < 2 || digits.length < 10 || digits.length > 15 || COURSES.indexOf(course) === -1 || CAMPUSES.indexOf(campus) === -1) {
+  if (name.length < 2 || digits.length < 10 || digits.length > 15 || COURSES.indexOf(course) === -1 || CAMPUSES.indexOf(campus) === -1 || QUALIFICATIONS.indexOf(qualification) === -1 || DECISIONS.indexOf(decision) === -1 || CALL_TIMES.indexOf(callTime) === -1) {
     res.status(400).json({ ok: false });
     return;
   }
@@ -200,6 +209,9 @@ module.exports = async function handler(req, res) {
         'Mobile: ' + phone,
         'Course: ' + course,
         'Campus: ' + campus,
+        'Qualification: ' + qualification,
+        'Who decides: ' + decision,
+        'Best time for a call: ' + callTime,
         'Page: ' + sourceUrl
       ].join('\n'),
       html: [
@@ -208,6 +220,9 @@ module.exports = async function handler(req, res) {
         '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Mobile:</strong> ' + escapeHtml(phone) + '</p>',
         '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Course:</strong> ' + escapeHtml(course) + '</p>',
         '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Campus:</strong> ' + escapeHtml(campus) + '</p>',
+        '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Qualification:</strong> ' + escapeHtml(qualification) + '</p>',
+        '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Who decides:</strong> ' + escapeHtml(decision) + '</p>',
+        '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Best time for a call:</strong> ' + escapeHtml(callTime) + '</p>',
         '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Page:</strong> ' + escapeHtml(sourceUrl) + '</p>'
       ].join('')
     });
@@ -223,6 +238,9 @@ module.exports = async function handler(req, res) {
       phone: phone,
       course: course,
       campus: campus,
+      qualification: qualification,
+      decision: decision,
+      call_time: callTime,
       page: campaign.page,
       referrer: referrer,
       utm_source: campaign.utm_source,
