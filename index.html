@@ -45,6 +45,7 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 .revav{width:58px;height:58px;border-radius:50%;flex-shrink:0;background-size:1800% auto;background-position-y:18%}
 .stars{color:#F5B400;letter-spacing:2px;font-size:14px;line-height:1}
 .arrow{width:44px;height:44px;border:none;background:transparent;color:#222;font-size:22px;cursor:pointer}
+.arrow:hover{color:#9A094C}
 .float-cta{display:none}
 .announce{background:#9A094C;color:#FFFFFF}
 .announce-inner{max-width:1276px;margin:0 auto;padding:11px 32px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;font-size:15px;font-weight:500}
@@ -58,7 +59,6 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 .head-points li:first-child{border-left:none}
 .head-points b{font-weight:700;font-size:13px;letter-spacing:.06em;color:#9A094C}
 .head-apply{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;background:#1A2744;color:#FFFFFF;text-decoration:none;font-weight:600;white-space:nowrap;flex:0 0 auto}
-.head-apply:hover{background:#121C33;color:#FFFFFF}
 .vsl{background:#FFFFFF;padding:80px 32px 16px}
 .vsl-inner{max-width:920px;margin:0 auto;text-align:center}
 .vsl-kicker{margin:0;font-family:"Plus Jakarta Sans",sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9A094C}
@@ -66,7 +66,7 @@ h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif}h1,h2{font-weight:800!imp
 .vsl-frame{position:relative;margin:32px auto 0;background:#1A2744;box-shadow:0 18px 40px rgba(26,39,68,.14)}
 .vsl-frame video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#111;object-fit:contain}
 .vsl-play{position:absolute;inset:0;border:0;padding:0;background:linear-gradient(180deg,rgba(16,32,72,.05),rgba(16,32,72,.28));cursor:pointer;display:flex;align-items:center;justify-content:center}
-.vsl-play span{width:76px;height:76px;background:#9A094C;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(154,9,76,.35)}
+.vsl-play span{width:84px;height:84px;background:#9A094C;display:flex;align-items:center;justify-content:center;animation:ping 1.15s ease-out infinite}
 .vsl-play span:before{content:"";display:block;width:0;height:0;margin-left:4px;border-style:solid;border-width:12px 0 12px 20px;border-color:transparent transparent transparent #fff}
 .vsl-play:hover span{background:#6E0736}
 .vsl-play.is-hidden{display:none}
@@ -118,7 +118,7 @@ header,.topbar{width:100%;box-sizing:border-box}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes marquee{to{transform:translateX(-50%)}}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(154,9,76,.45)}80%,100%{box-shadow:0 0 0 12px rgba(154,9,76,0)}}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(154,9,76,.6)}70%,100%{box-shadow:0 0 0 22px rgba(154,9,76,0)}}
 @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
 .rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
 .d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}.d5{animation-delay:.7s}
@@ -132,7 +132,10 @@ header,.topbar{width:100%;box-sizing:border-box}
 .mq:hover .mq-track{animation-play-state:paused}
 .lift{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;box-shadow:0 0 10px rgba(0,0,0,.08)}.lift:hover{transform:translateY(-4px);box-shadow:0 8px 18px rgba(54,52,142,.14)}
 .zoom{overflow:hidden;border-radius:0}.zoom img{display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}.zoom:hover img{transform:scale(1.06)}
-.btn{text-transform:none;letter-spacing:0;font-size:16px!important;font-weight:600;border-radius:0!important;transition:background .2s,color .2s}.btn:hover{background:#121C33!important;color:#FFFFFF!important;box-shadow:none}
+@keyframes btn-glow{0%,100%{transform:scale(1);box-shadow:0 0 0 1px rgba(255,197,58,.28),0 4px 12px rgba(26,39,68,.1)}50%{transform:scale(1.025);box-shadow:0 0 0 2px rgba(255,197,58,.85),0 0 14px 3px rgba(255,197,58,.7)}}
+.btn,.head-apply,.float-cta{position:relative;animation:btn-glow 1.35s ease-in-out infinite;transition:background-color .22s,color .22s}
+.btn:active,.head-apply:active,.float-cta:active{animation:none;transform:scale(.96)}
+.btn{text-transform:none;letter-spacing:0;font-size:16px!important;font-weight:600;border-radius:0!important}.btn:hover,.head-apply:hover{background-color:#121C33!important;color:#FFFFFF!important}
 .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
 .cta .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;background:#1A2744;color:#FFFFFF;text-decoration:none}
 .cta .btn.ghost{background:transparent;color:#1A2744;border:1.5px solid #1A2744}
@@ -140,8 +143,8 @@ header,.topbar{width:100%;box-sizing:border-box}
 .cta.on-dark{justify-content:center}
 .cta.on-dark .btn{background:#FFFFFF;color:#1A2744}
 .cta.on-dark .btn.ghost{background:transparent;color:#FFFFFF;border:1.5px solid #FFFFFF}
-.cta.on-dark .btn:hover{background:#FFC53A!important;color:#1A2744!important}
-.btn svg{transition:transform .2s}.btn:hover svg{transform:translateX(4px);stroke:#292929}
+.cta.on-dark .btn:hover{background-color:#FFC53A!important;color:#1A2744!important}
+.btn svg{stroke:#292929}
 @supports (animation-timeline: view()){.reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}.ecg path{stroke-dashoffset:0}.k5000{--n:5000}.k7{--n:7}.k100{--n:100}.k95{--n:95}.k2015{--n:2015}}
 </style>
@@ -280,7 +283,7 @@ header,.topbar{width:100%;box-sizing:border-box}
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px">
 <div role="group" aria-label="Filter by level" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px">
 <sc-for list="{{filters}}" as="f" hint-placeholder-count="5">
-<button type="button" onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="min-height: 44px; padding: 0 18px; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; {{f.style}}">{{f.label}}</button>
+<button class="chip" type="button" onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="min-height: 44px; padding: 0 18px; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; {{f.style}}">{{f.label}}</button>
 </sc-for>
 </div>
 </div>
