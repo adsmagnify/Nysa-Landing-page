@@ -50,6 +50,42 @@ function clientIp(req) {
   return raw.split(',')[0].trim().slice(0, 64);
 }
 
+function campaignFields(sourceUrl) {
+  const fields = { page: sourceUrl, utm_source: '', utm_medium: '', utm_campaign: '' };
+  try {
+    const url = new URL(sourceUrl);
+    fields.page = url.origin + url.pathname;
+    fields.utm_source = text(url.searchParams.get('utm_source'), 80);
+    fields.utm_medium = text(url.searchParams.get('utm_medium'), 80);
+    fields.utm_campaign = text(url.searchParams.get('utm_campaign'), 120);
+  } catch (err) {}
+  return fields;
+}
+
+async function saveLeadToSheet(lead) {
+  const url = String(process.env.SHEETS_WEBHOOK_URL || '').trim();
+  const secret = String(process.env.SHEETS_SECRET || '').trim();
+  if (!url || !secret) return;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      secret: secret,
+      submitted_at: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', hour12: true }),
+      name: lead.name,
+      phone: lead.phone,
+      course: lead.course,
+      campus: lead.campus,
+      page: lead.page,
+      referrer: lead.referrer,
+      utm_source: lead.utm_source,
+      utm_medium: lead.utm_medium,
+      utm_campaign: lead.utm_campaign
+    })
+  });
+  if (!response.ok) console.error('sheet append failed', response.status);
+}
+
 async function sendMetaLead(req, lead) {
   const token = String(process.env.META_CAPI_TOKEN || '').trim();
   const pixelId = String(process.env.META_PIXEL_ID || '1656142772730961').replace(/\D/g, '');
@@ -137,6 +173,13 @@ module.exports = async function handler(req, res) {
     return;
   }
 
+  const eventId = text(body.event_id, 64).replace(/[^a-zA-Z0-9-]/g, '').slice(0, 64) || crypto.randomUUID();
+  const sourceUrl = /^https?:\/\/[^\s]{8,500}$/.test(text(body.source_url, 500))
+    ? text(body.source_url, 500)
+    : 'https://nysahealthcare.co.in/';
+  const referrer = /^https?:\/\/[^\s]{8,500}$/.test(text(body.referrer, 500)) ? text(body.referrer, 500) : '';
+  const campaign = campaignFields(sourceUrl);
+
   const port = Number(process.env.SMTP_PORT || 465);
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
@@ -156,14 +199,16 @@ module.exports = async function handler(req, res) {
         'Name: ' + name,
         'Mobile: ' + phone,
         'Course: ' + course,
-        'Campus: ' + campus
+        'Campus: ' + campus,
+        'Page: ' + sourceUrl
       ].join('\n'),
       html: [
         '<h2 style="font-family:Arial,sans-serif;color:#1A2744">New admissions enquiry</h2>',
         '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Name:</strong> ' + escapeHtml(name) + '</p>',
         '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Mobile:</strong> ' + escapeHtml(phone) + '</p>',
         '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Course:</strong> ' + escapeHtml(course) + '</p>',
-        '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Campus:</strong> ' + escapeHtml(campus) + '</p>'
+        '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Campus:</strong> ' + escapeHtml(campus) + '</p>',
+        '<p style="font-family:Arial,sans-serif;font-size:16px;color:#292929"><strong>Page:</strong> ' + escapeHtml(sourceUrl) + '</p>'
       ].join('')
     });
   } catch (err) {
@@ -172,10 +217,21 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  const eventId = text(body.event_id, 64).replace(/[^a-zA-Z0-9-]/g, '').slice(0, 64) || crypto.randomUUID();
-  const sourceUrl = /^https?:\/\/[^\s]{8,500}$/.test(text(body.source_url, 500))
-    ? text(body.source_url, 500)
-    : 'https://nysahealthcare.co.in/';
+  try {
+    await saveLeadToSheet({
+      name: name,
+      phone: phone,
+      course: course,
+      campus: campus,
+      page: campaign.page,
+      referrer: referrer,
+      utm_source: campaign.utm_source,
+      utm_medium: campaign.utm_medium,
+      utm_campaign: campaign.utm_campaign
+    });
+  } catch (err) {
+    console.error('sheet append failed');
+  }
 
   try {
     await sendMetaLead(req, {
