@@ -1,4 +1,4 @@
-var HEADERS = ['Submitted at', 'Name', 'Phone', 'Course', 'Campus', 'Qualification', 'Who decides', 'Best time for a call', 'Landing page', 'Referrer', 'Source', 'Medium', 'Campaign'];
+var HEADERS = ['Submitted at', 'Name', 'Phone', 'Course', 'Area', 'Qualification', 'Who decides', 'Daily classes at Kandivali', 'Landing page', 'Referrer', 'Source', 'Medium', 'Campaign'];
 
 function doPost(e) {
   try {
@@ -31,10 +31,10 @@ function doPost(e) {
       data.name || '',
       data.phone || '',
       data.course || '',
-      data.campus || '',
+      data.area || data.campus || '',
       data.qualification || '',
       data.decision || '',
-      data.call_time || '',
+      data.daily_classes || data.call_time || '',
       data.page || '',
       data.referrer || '',
       data.utm_source || '',

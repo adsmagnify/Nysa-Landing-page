@@ -206,19 +206,19 @@ header,.topbar{width:100%;box-sizing:border-box}
 </div>
 <div class="hero-card">
 <h2>Get in Touch with Us</h2>
-<p class="hero-lead">We're here to support your journey in healthcare.</p>
+<p class="hero-lead">📍 Campus: Kandivali West, Mumbai (near Dahanukarwadi Metro)</p>
 <form id="enquiry" style="display: flex; flex-direction: column; gap: 14px">
 <div class="form-row">
 <label class="field"><span class="q">Full name</span><input class="control" type="text" name="name" required autocomplete="name" placeholder="Your name"></label>
-<label class="field"><span class="q">Mobile number</span><input class="control" type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="+91"></label>
+<label class="field"><span class="q">Mobile number</span><input class="control" type="tel" name="phone" required autocomplete="tel" inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" title="Enter a 10-digit mobile number starting with 6, 7, 8 or 9" placeholder="9876543210"></label>
 </div>
-<div class="form-row">
+<div class="form-row even">
 <label class="field"><span class="q">Course of interest</span><select class="control" name="course" required><option>Medical Lab Technology</option><option>Radiology &amp; Imaging</option><option>Operation Theatre Technology</option><option>Physiotherapy</option><option>Pharmacy</option></select></label>
-<label class="field"><span class="q">Nearest campus</span><select class="control" name="campus" required><option>Mumbai</option><option>Pune</option><option>Nashik</option><option>Nagpur</option><option>Jalgaon</option><option>Latur</option><option>Kolhapur</option></select></label>
+<label class="field"><span class="q">Which area do you live in?</span><select class="control" name="area" required><option value="" disabled selected>Select</option><option>Borivali / Kandivali / Dahisar</option><option>Malad / Goregaon</option><option>Andheri / Jogeshwari</option><option>Mira Road / Bhayander</option><option>Vasai / Virar</option><option>Other area in Mumbai</option><option>Outside Mumbai</option></select></label>
 </div>
 <div class="form-row even">
 <label class="field"><span class="q">What is your highest completed qualification?</span><select class="control" name="qualification" required><option value="" disabled selected>Select</option><option>12th (PCB)</option><option>12th (other stream)</option><option>Diploma</option><option>Bachelor's degree</option><option>Master's degree</option><option>Other</option></select></label>
-<label class="field"><span class="q">Best time for a call?</span><select class="control" name="call_time" required><option value="" disabled selected>Select</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></label>
+<label class="field"><span class="q">Can you attend classes daily at Kandivali West, Mumbai?</span><select class="control" name="daily_classes" required><option value="" disabled selected>Select</option><option>Yes</option><option>No</option></select></label>
 </div>
 <div class="form-row even">
 <label class="field"><span class="q">Who will decide on joining?</span><select class="control" name="decision" required><option value="" disabled selected>Select</option><option>I will</option><option>My parents or family</option><option>Together</option></select></label>
@@ -663,6 +663,15 @@ function nysaFbc() {
   if (!click) return '';
   return 'fb.1.' + Date.now() + '.' + click;
 }
+document.addEventListener('input', function (event) {
+  var field = event.target;
+  if (!field || field.name !== 'phone' || !field.form || field.form.id !== 'enquiry') return;
+  var digits = field.value.replace(/\D/g, '');
+  if (digits.length === 12 && digits.slice(0, 2) === '91') digits = digits.slice(2);
+  else if (digits.length === 11 && digits.charAt(0) === '0') digits = digits.slice(1);
+  digits = digits.slice(0, 10);
+  if (field.value !== digits) field.value = digits;
+});
 document.addEventListener('submit', function (event) {
   var form = event.target;
   if (!form || form.id !== 'enquiry') return;
@@ -671,6 +680,13 @@ document.addEventListener('submit', function (event) {
   var status = form.querySelector('[data-enquiry-status]');
   var data = Object.fromEntries(new FormData(form).entries());
   if (data._honey) return;
+  var phoneDigits = String(data.phone || '').replace(/\D/g, '');
+  if (!/^[6-9]\d{9}$/.test(phoneDigits)) {
+    status.style.color = '#FFC53A';
+    status.textContent = 'Enter a 10-digit mobile number starting with 6, 7, 8 or 9.';
+    return;
+  }
+  data.phone = phoneDigits;
   var label = button.textContent;
   var eventId = nysaEventId();
   button.disabled = true;
@@ -684,10 +700,10 @@ document.addEventListener('submit', function (event) {
       name: data.name,
       phone: data.phone,
       course: data.course,
-      campus: data.campus,
+      area: data.area,
       qualification: data.qualification,
       decision: data.decision,
-      call_time: data.call_time,
+      daily_classes: data.daily_classes,
       _honey: data._honey || '',
       event_id: eventId,
       fbp: nysaCookie('_fbp'),
